@@ -48,6 +48,9 @@
   white-space: nowrap;
   overflow: hidden;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .card__like-button {
@@ -55,4 +58,12 @@
   width: 21px;
   height: 18px;
   border: none;
+}
+
+@media screen and (max-width: 800px) {
+  .card__title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 }
