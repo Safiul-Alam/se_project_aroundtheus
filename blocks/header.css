@@ -3,6 +3,12 @@
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
 
+.header__logo {
+  width: 173px;
+  height: 33px;
+  margin: 0 907px 41px 0;
+}
+
 @media screen and (max-width: 900px) {
   .header {
     max-width: 320px;
@@ -10,12 +16,10 @@
     width: 100%;
     margin-top: 28px;
   }
+
   .header__logo {
     width: 126px;
     height: 24px;
-    /* top: 28px;
-    left: 27px;
-    padding: 28px 167px 32px 27px; */
     padding-left: 27px;
   }
 }
