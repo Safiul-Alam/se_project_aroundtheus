@@ -11,9 +11,16 @@
   color: #545454;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 900px) {
   .footer {
     max-width: 282px;
     height: 14px;
+    margin: 48px 19px 36px;
+  }
+
+  .footer__copyright {
+    font-size: 14px;
+    line-height: 16.94px;
+    text-align: left;
   }
 }

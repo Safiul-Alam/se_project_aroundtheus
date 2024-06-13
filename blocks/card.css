@@ -60,7 +60,10 @@
   border: none;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
+  .cards {
+    margin: 36px 19px 0;
+  }
   .card__title {
     text-overflow: ellipsis;
     white-space: nowrap;
