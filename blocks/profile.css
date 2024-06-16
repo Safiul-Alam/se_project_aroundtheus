@@ -55,7 +55,7 @@
   opacity: 0.6;
 }
 
-.profile_description {
+.profile__description {
   width: 415px;
   font-size: 18px;
   line-height: 21.78px;
@@ -113,7 +113,7 @@
     width: 196px;
   }
 
-  .profile_description {
+  .profile__description {
     width: 100%;
     text-align: center;
     font-size: 14px;
