@@ -25,4 +25,19 @@ cardData6 = {
 const initialCards = [
   cardData1, cardData2, cardData3, cardData4, cardData5, cardData6
 ];
-console.log(initialCards);
+// console.log(initialCards);
+
+const profileEditBtn = document.querySelector('#profile-edit-button');
+// console.log(profileEditBtn);
+const profileEditModel = document.querySelector('#profile-edit-model');
+const profileModelCloseBtn = document.querySelector('#model-close')
+
+profileEditBtn.addEventListener('click', () => { //arrow function
+  // console.log('button clicked');
+  profileEditModel.classList.add('model_opened');
+})
+
+
+profileModelCloseBtn.addEventListener('click', () => {
+  profileEditModel.classList.remove('model_opened');
+})
