@@ -44,103 +44,7 @@
         </section>
 
         <section class="cards page__section">
-          <ul class="cards__list">
-            <li class="card">
-              <img
-                src="./images/yosemite.jpg"
-                alt="yosemite image"
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Yosemite Valley</h2>
-                <button
-                  type="button"
-                  aria-label=""
-                  class="card__like-button"
-                ></button>
-              </div>
-            </li>
-
-            <li class="card">
-              <img
-                src="./images/lake-louise.jpg"
-                alt="lake-louise image"
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Lake Louies</h2>
-                <button
-                  type="button"
-                  aria-label=""
-                  class="card__like-button"
-                ></button>
-              </div>
-            </li>
-
-            <li class="card">
-              <img
-                src="./images/bald-mountains.jpg"
-                alt="bald-mountains image"
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Bald Mountains</h2>
-                <button
-                  type="button"
-                  aria-label=""
-                  class="card__like-button"
-                ></button>
-              </div>
-            </li>
-
-            <li class="card">
-              <img
-                src="./images/latemar.jpg"
-                alt="latemar image"
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Latemar</h2>
-                <button
-                  type="button"
-                  aria-label=""
-                  class="card__like-button"
-                ></button>
-              </div>
-            </li>
-
-            <li class="card">
-              <img
-                src="./images/vanoise.jpg"
-                alt="vanoise image"
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Vanoise National</h2>
-                <button
-                  type="button"
-                  aria-label=""
-                  class="card__like-button"
-                ></button>
-              </div>
-            </li>
-
-            <li class="card">
-              <img
-                src="./images/lago.jpg"
-                alt="lago image"
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title">Lago di Braise</h2>
-                <button
-                  type="button"
-                  aria-label=""
-                  class="card__like-button"
-                ></button>
-              </div>
-            </li>
-          </ul>
+          <ul class="cards__list"></ul>
         </section>
       </main>
 
@@ -152,28 +56,41 @@
     <div class="model" id="profile-edit-model">
       <div class="model__container">
         <div class="model__close" id="model-close"></div>
-
         <p class="model__heading">Edit profile</p>
 
-        <form action="/form.php" class="model__form">
+        <form class="model__form">
           <input
             class="model__title model__input"
             type="text"
-            name="title"
-            id="title"
+            name="model-title"
+            id="profile-title-input"
             placeholder="Name"
           />
           <input
             class="model__description model__input"
             type="text"
             name="description"
-            id="description"
+            id="profile-description-input"
             placeholder="Description"
           />
-          <button class="model__button">Save</button>
+          <button type="submit" class="model__button">Save</button>
         </form>
       </div>
     </div>
+
+    <template id="card-template">
+      <li class="card">
+        <img src="" alt="" class="card__image" />
+        <div class="card__description">
+          <h2 class="card__title"></h2>
+          <button
+            type="button"
+            aria-label=""
+            class="card__like-button"
+          ></button>
+        </div>
+      </li>
+    </template>
 
     <script src="./scripts/index.js"></script>
   </body>

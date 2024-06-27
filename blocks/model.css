@@ -95,6 +95,10 @@
   text-align: center;
 }
 
+.model__button:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 900px) {
   .model__container {
     width: 282px;

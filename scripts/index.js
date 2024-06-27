@@ -25,19 +25,52 @@ cardData6 = {
 const initialCards = [
   cardData1, cardData2, cardData3, cardData4, cardData5, cardData6
 ];
-// console.log(initialCards);
 
+
+// Elements
 const profileEditBtn = document.querySelector('#profile-edit-button');
-// console.log(profileEditBtn);
 const profileEditModel = document.querySelector('#profile-edit-model');
 const profileModelCloseBtn = document.querySelector('#model-close')
+const profileTitle = document.querySelector('.profile__title');
+const profileDescription = document.querySelector('.profile__description');
+const profileTitleInput = document.querySelector('#profile-title-input');
+const profileDescriptionInput = document.querySelector('#profile-description-input');
+const profileEditForm = profileEditModel.querySelector('.model__form');
 
+
+//Function
+function closePopUp() {
+  profileEditModel.classList.toggle('model_opened');
+}
+
+//Event handlers
+function handleProfileEditSubmit(e){
+  e.preventDefault();
+  profileTitle.textContent = profileTitleInput.value;
+  profileDescription.textContent =  profileDescriptionInput.value;
+  closePopUp();
+};
+
+
+//Event Listeners
 profileEditBtn.addEventListener('click', () => { //arrow function
-  // console.log('button clicked');
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
   profileEditModel.classList.add('model_opened');
 })
 
+// profileModelCloseBtn.addEventListener('click', () => {
+//   // profileEditModel.classList.remove('model_opened');
+//   // profileEditModel.classList.toggle('model_opened');
+//   closePopUp();
+// })
+profileModelCloseBtn.addEventListener('click', closePopUp )
 
-profileModelCloseBtn.addEventListener('click', () => {
-  profileEditModel.classList.remove('model_opened');
-})
+// profileEditForm.addEventListener('submit', (e) => {
+//   e.preventDefault();
+//   profileTitle.textContent = profileTitleInput.value;
+//   profileDescription.textContent =  profileDescriptionInput.value;
+//   closePopUp();
+// });
+
+profileEditForm.addEventListener('submit', handleProfileEditSubmit);
