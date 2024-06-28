@@ -1,4 +1,4 @@
-.model {
+.modal {
   position: fixed;
   font-family: Inter, Arial, Helvetica, sans-serif;
   background-color: rgba(0, 0, 0, 0.5);
@@ -10,11 +10,11 @@
   display: none;
 }
 
-.model_opened {
+.modal_opened {
   display: flex;
 }
 
-.model__container {
+.modal__container {
   background-color: #fff;
   margin: auto;
   width: 430px;
@@ -24,25 +24,21 @@
   padding: 0;
 }
 
-.model__close {
+.modal__close {
   width: 40px;
   height: 40px;
   border: none;
-
   background-color: transparent;
   background-image: url(../images/Close_Icon.svg);
   background-repeat: no-repeat;
   background-size: contain;
-
   position: absolute;
-  /* top: -45px;
-  right: -45px; */
   bottom: calc(100% + 5px);
   left: calc(100% + 5px);
   cursor: pointer;
 }
 
-.model__heading {
+.modal__heading {
   color: #000;
   font-size: 24px;
   font-weight: 900;
@@ -54,14 +50,14 @@
   padding-top: 34px;
 }
 
-.model__form {
+.modal__form {
   display: flex;
   flex-direction: column;
   margin-right: 36px;
   margin-left: 36px;
 }
 
-.model__input {
+.modal__input {
   font-size: 14px;
   font-weight: 400;
   line-height: 16.94px;
@@ -72,16 +68,15 @@
   padding-bottom: 13.26px;
 }
 
-.model__title {
+.modal__title {
   margin-top: 54px;
-  padding: 0;
 }
 
-.model__description {
+.modal__description {
   margin-top: 29.74px;
 }
 
-.model__button {
+.modal__button {
   margin-top: 48px;
   height: 50.15px;
   border: none;
@@ -95,25 +90,52 @@
   text-align: center;
 }
 
-.model__button:hover {
+.modal__button:hover {
   cursor: pointer;
 }
 
 @media screen and (max-width: 900px) {
-  .model__container {
+  .modal__container {
     width: 282px;
     height: 322px;
     margin: 0 auto;
     top: 123px;
   }
 
-  .model__close {
+  .modal__close {
     width: 26px;
     height: 26px;
+    bottom: calc(100% + 25px);
+    left: calc(100% - 35px);
   }
 
-  .model__body {
-    margin-right: 22px;
-    margin-left: 22px;
+  .modal__heading {
+    padding: 0;
+    margin: 25px 22px 0;
+    font-size: 18px;
+  }
+
+  .modal__form {
+    margin: 0 22px 0;
+  }
+
+  .modal__input {
+    padding-bottom: 13px;
+  }
+
+  .modal__title {
+    margin-top: 65px;
+  }
+
+  .modal__description {
+    margin-top: 24px;
+  }
+
+  .modal__button {
+    margin-top: 45px;
+    width: 238px;
+    height: 46px;
+    font-size: 14px;
+    line-height: 16.94px;
   }
 }
