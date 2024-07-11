@@ -5,6 +5,7 @@
   max-width: 282px;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
 
 .card__image {
@@ -42,4 +43,18 @@
 .card__like-button:hover {
   cursor: pointer;
   opacity: 0.5;
+}
+
+.card__delete-button {
+  background: url(../images/trash.svg) center no-repeat;
+  width: 15.44px;
+  height: 13.51px;
+  position: absolute;
+  top: 15px;
+  right: 12px;
+  color: #ffffff;
+}
+
+.card__delete-button:hover {
+  cursor: pointer;
 }
