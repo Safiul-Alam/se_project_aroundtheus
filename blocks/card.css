@@ -50,9 +50,11 @@
   width: 15.44px;
   height: 13.51px;
   position: absolute;
-  top: 15px;
-  right: 12px;
+  top: 18px;
+  right: 15px;
   color: #ffffff;
+  background-size: contain;
+  border: none;
 }
 
 .card__delete-button:hover {

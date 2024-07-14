@@ -7,9 +7,10 @@
   bottom: 0;
   right: 0;
   z-index: 999;
-  display: none;
+  display: none; /* model is invisible */
 }
 
+/* making model visible */
 .modal_opened {
   display: flex;
 }
