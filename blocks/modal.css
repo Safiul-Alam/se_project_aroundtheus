@@ -101,13 +101,6 @@
   cursor: pointer;
 }
 
-.model__preview {
-}
-
-.model__preview:clicked {
-  opacity: 0.5;
-}
-
 .modal__preview-container {
   background-color: rgba(0, 0, 0, 0.7);
   position: relative;
