@@ -45,6 +45,10 @@
   opacity: 0.5;
 }
 
+.card__like-button_active {
+  background-image: url(../images/Like-button_active.svg);
+}
+
 .card__delete-button {
   background: url(../images/trash.svg) center no-repeat;
   width: 15.44px;
