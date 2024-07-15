@@ -9,7 +9,6 @@
   z-index: 999;
   visibility: hidden;
   opacity: 0;
-  /* transition: visibility 0s ease 0.5s, opacity 0.5s ease; */
   align-items: center;
   justify-content: center;
   transition: visibility 0s 0.6s ease-in-out, opacity 0.6s;
@@ -18,7 +17,6 @@
 
 /* making model visible */
 .modal_opened {
-  /* display: flex; */
   visibility: visible;
   opacity: 1;
 }
@@ -104,13 +102,9 @@
 }
 
 .model__preview {
-  /* visibility: hidden; */
-  /* opacity: 0; */
-  /* transition: visibility 0s linear 0.5s, opacity 0.5s linear; */
 }
 
 .model__preview:clicked {
-  /* visibility: visible; */
   opacity: 0.5;
 }
 
@@ -118,8 +112,6 @@
   background-color: rgba(0, 0, 0, 0.7);
   position: relative;
   margin: auto;
-  /* max-width: 75vw;
-  max-height: 75vh; */
   background: transparent;
 }
 
