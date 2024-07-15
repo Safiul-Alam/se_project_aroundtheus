@@ -8,6 +8,7 @@ Project features:
 -Flex box layout
 -Grid layout
 -BEM file structure
+-JavaScript (in progress)
 
 Video link about the project:
 https://www.loom.com/share/315b1ee4d4b94d9ead7e3ee10aba0284
