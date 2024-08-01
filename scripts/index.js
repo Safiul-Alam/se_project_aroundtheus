@@ -95,9 +95,11 @@ function getCardElement(cardData) {
   const cardImageEl = cardElement.querySelector('.card__image');
   const cardTitleEl = cardElement.querySelector('.card__title');
   const likeButton = cardElement.querySelector('.card__like-button');
+
   likeButton.addEventListener('click', () => {
     likeButton.classList.toggle('card__like-button_active');
   });
+
   const deleteButton = cardElement.querySelector('.card__delete-button');
   deleteButton.addEventListener('click', () => {
     cardElement.remove();
@@ -109,6 +111,7 @@ function getCardElement(cardData) {
     previewModalImage.alt = cardData.name;
     previewCaption.textContent = cardData.name;
   });
+
   // Set image and title
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
@@ -134,6 +137,6 @@ initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
 
 closeButtons.forEach((button) => {
   // Find the closest popup only once and set listeners
-  const popup = button.closest('.modal');
-  button.addEventListener('click', () => closePopUp(popup));
+  const popUp = button.closest('.modal');
+  button.addEventListener('click', () => closePopUp(popUp));
 });
