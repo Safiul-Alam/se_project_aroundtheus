@@ -148,9 +148,6 @@
   visibility: hidden;
   position: absolute;
   top: calc(100% + 6px);
-  /* left: 0;
-  right: 0; */
-
   transition: 0.3s;
 }
 .modal__input_type_error {
@@ -160,19 +157,6 @@
 .modal__error_visible {
   visibility: visible;
 }
-
-/* .form__input-error_active {
-  opacity: 1;
-}
-
-.modal__input_type_error {
-  border-bottom-color: red;
-}
-
-.form__input-error {
-  color: red;
-  opacity: 0;
-} */
 
 @media screen and (max-width: 900px) {
   .modal__container {

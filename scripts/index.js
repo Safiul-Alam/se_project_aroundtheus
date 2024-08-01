@@ -64,9 +64,13 @@ const closeButtons = document.querySelectorAll('.modal__close');
 //Function ----------------------------------------------------------------
 function closePopUp(modal) {
   modal.classList.toggle('modal_opened');
+  document.removeEventListener('keydown', closeModalOnEvent);
+  document.removeEventListener('click', closeModalOnEvent);
 }
 function openPopUp(modal) {
   modal.classList.add('modal_opened');
+  document.addEventListener('keydown', closeModalOnEvent);
+  document.addEventListener('click', closeModalOnEvent);
 }
 function renderCard (cardData, wrapper){
   const cardElement = getCardElement(cardData);
@@ -140,3 +144,45 @@ closeButtons.forEach((button) => {
   const popUp = button.closest('.modal');
   button.addEventListener('click', () => closePopUp(popUp));
 });
+
+
+function closeModalOnEvent(event) {
+  const modals = document.querySelectorAll(".modal");
+
+  if (event.key === "Escape" && event.type === "keydown") {
+    const openedPopup = document.querySelector(".modal_opened");
+    closePopUp(openedPopup);
+  }
+
+  if (event.type === "click") {
+    if (event.target.classList.contains("modal")) {
+      closePopUp(event.target);
+    }
+  }
+}
+document.addEventListener('keydown', closeModalOnEvent);
+
+// document.addEventListener('keydown', function(event) {
+//   const key = event.key;
+//   const openPopup = document.querySelector(".modal_opened");
+//   if(key === "Escape") {
+//     closePopUp(openPopup)
+//   };
+// });
+
+
+// document.addEventListener('keydown', function(event) {
+//   if (event.type === "click") {
+//     if (event.target.classList.contains("modal")) {
+//       closeModal(evt.target);
+//     }
+//   }
+// });
+
+
+// const modal = document.querySelector(".modal");
+// if (event.type === "click") {
+//   if (evt.target.classList.contains("modal")) {
+//     closeModal(evt.target);
+//   }
+// }
