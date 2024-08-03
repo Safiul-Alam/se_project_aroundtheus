@@ -37,13 +37,13 @@ const profileEditModalCloseBtn = profileEditmodal.querySelector('#profile-edit-m
 const profileTitle = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__description');
 
-// form data input elements
+// form data input elements -------------------------------------------------------
 const profileTitleInput = document.querySelector('#profile-title-input');
 const profileDescriptionInput = document.querySelector('#profile-description-input');
 const cardTitleInput = cardAddModal.querySelector('#card-title-input');
 const cardUrlInput = cardAddModal.querySelector('#card-url-input');
 
-const profileEditForm = profileEditmodal.querySelector('#profile-edit-form');
+const profileEditForm = document.forms['profile-edit-form'];
 const cardAddForm = cardAddModal.querySelector('#card-add-form');
 const cardListEl = document.querySelector('.cards__list');
 
@@ -67,6 +67,7 @@ function closePopUp(modal) {
   document.removeEventListener('keydown', closeModalOnEvent);
   document.removeEventListener('click', closeModalOnEvent);
 }
+
 function openPopUp(modal) {
   modal.classList.add('modal_opened');
   document.addEventListener('keydown', closeModalOnEvent);
@@ -123,6 +124,18 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
+function closeModalOnEvent(event) {
+  if (event.key === "Escape" && event.type === "keydown") {
+    const openedPopup = document.querySelector(".modal_opened");
+    closePopUp(openedPopup);
+  }
+
+  if (event.type === "click") {
+    if (event.target.classList.contains("modal")) {
+      closePopUp(event.target);
+    }
+  }
+}
 
 
 // Event Listeners -----------------------------------------------------
@@ -146,43 +159,7 @@ closeButtons.forEach((button) => {
 });
 
 
-function closeModalOnEvent(event) {
-  const modals = document.querySelectorAll(".modal");
-
-  if (event.key === "Escape" && event.type === "keydown") {
-    const openedPopup = document.querySelector(".modal_opened");
-    closePopUp(openedPopup);
-  }
-
-  if (event.type === "click") {
-    if (event.target.classList.contains("modal")) {
-      closePopUp(event.target);
-    }
-  }
-}
-document.addEventListener('keydown', closeModalOnEvent);
-
-// document.addEventListener('keydown', function(event) {
-//   const key = event.key;
-//   const openPopup = document.querySelector(".modal_opened");
-//   if(key === "Escape") {
-//     closePopUp(openPopup)
-//   };
-// });
 
 
-// document.addEventListener('keydown', function(event) {
-//   if (event.type === "click") {
-//     if (event.target.classList.contains("modal")) {
-//       closeModal(evt.target);
-//     }
-//   }
-// });
 
 
-// const modal = document.querySelector(".modal");
-// if (event.type === "click") {
-//   if (evt.target.classList.contains("modal")) {
-//     closeModal(evt.target);
-//   }
-// }
