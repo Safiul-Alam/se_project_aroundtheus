@@ -54,9 +54,9 @@ const addNewCardBtn = document.querySelector('.profile__add-button');
 const closeNewCardBtn = document.querySelector('#profile-add-modal-close');
 
 const previewImageModal = document.querySelector("#image-preview-modal");
-const previewModalImage = document.querySelector(".modal__preview_image");
+const previewModalImage = document.querySelector(".modal__image");
 const previewCloseModal = previewImageModal.querySelector("#preview-modal-close");
-const previewCaption = document.querySelector(".modal__image_caption");
+const previewCaption = document.querySelector(".modal__caption");
 
 // Find all close buttons
 const closeButtons = document.querySelectorAll('.modal__close');

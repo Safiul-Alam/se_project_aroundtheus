@@ -127,14 +127,14 @@
   background: transparent;
 }
 
-.modal__preview_image {
+.modal__image {
   max-width: 75vw;
   max-height: 75vh;
   width: 433px;
   height: 540px;
 }
 
-.modal__image_caption {
+.modal__caption {
   font-family: inter, Arial, sans-serif;
   font-size: 12px;
   font-weight: 400;
