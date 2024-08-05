@@ -59,6 +59,7 @@ function enableValidation(options) {
   });
 }
 
+
 const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",

@@ -54,7 +54,7 @@
     </div>
 
     <!--edit modal-->
-    <div class="modal modal_edit" id="profile-edit-modal">
+    <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <div class="modal__close" id="profile-edit-modal-close"></div>
         <p class="modal__heading">Edit profile</p>
@@ -62,7 +62,7 @@
         <form class="modal__form" id="profile-edit-form">
           <label class="modal__label">
             <input
-              class="modal__title modal__input modal__input_type_error"
+              class="modal__input modal__input_title modal__input_type_error"
               type="text"
               name="modal-title"
               id="profile-title-input"
@@ -71,15 +71,12 @@
               maxlength="40"
               required
             />
-            <span
-              class="modal__input_error modal-edit__input_title-error"
-              id="profile-title-input-error"
-            ></span>
+            <span class="modal__error" id="profile-title-input-error"></span>
           </label>
 
           <label class="modal__label">
             <input
-              class="modal__description modal__input modal__input_type_error"
+              class="modal__input modal__input_description modal__input_type_error"
               type="text"
               name="description"
               id="profile-description-input"
@@ -89,7 +86,7 @@
               required
             />
             <span
-              class="modal__input_error modal-edit__input_desc-error"
+              class="modal__error"
               id="profile-description-input-error"
             ></span>
           </label>
@@ -113,7 +110,7 @@
         <form class="modal__form" id="card-add-form">
           <label class="modal__label">
             <input
-              class="modal__title modal__input modal__input_type_title"
+              class="modal__input modal__input_title modal__input_type_title"
               type="text"
               name="title"
               id="card-title-input"
@@ -122,24 +119,18 @@
               maxlength="30"
               required
             />
-            <span
-              class="modal__input_error modal__input_profile-error"
-              id="card-title-input-error"
-            ></span>
+            <span class="modal__error" id="card-title-input-error"></span>
           </label>
           <label class="modal__label">
             <input
-              class="modal__description modal__input modal__input_type_url"
+              class="modal__input modal__input_description modal__input_type_url"
               type="url"
               name="url"
               id="card-url-input"
               placeholder="Image URL"
               required
             />
-            <span
-              class="modal__input_error modal__input_desc-error"
-              id="card-url-input-error"
-            ></span>
+            <span class="modal__error" id="card-url-input-error"></span>
           </label>
           <button
             type="submit"
@@ -156,8 +147,8 @@
     <div class="modal model_preview" id="image-preview-modal">
       <div class="modal__preview-container">
         <div class="modal__close" id="preview-modal-close"></div>
-        <img class="modal__preview-image" src="" alt="" />
-        <p class="modal__image-caption"></p>
+        <img class="modal__preview_image" src="" alt="" />
+        <p class="modal__image_caption"></p>
       </div>
     </div>
 
@@ -167,14 +158,14 @@
         <button
           type="button"
           aria-label=""
-          class="card__delete-button"
+          class="card__delete_button"
         ></button>
         <div class="card__description">
           <h2 class="card__title"></h2>
           <button
             type="button"
             aria-label=""
-            class="card__like-button"
+            class="card__like_button"
           ></button>
         </div>
       </li>

@@ -54,9 +54,9 @@ const addNewCardBtn = document.querySelector('.profile__add-button');
 const closeNewCardBtn = document.querySelector('#profile-add-modal-close');
 
 const previewImageModal = document.querySelector("#image-preview-modal");
-const previewModalImage = document.querySelector(".modal__preview-image");
+const previewModalImage = document.querySelector(".modal__preview_image");
 const previewCloseModal = previewImageModal.querySelector("#preview-modal-close");
-const previewCaption = document.querySelector(".modal__image-caption");
+const previewCaption = document.querySelector(".modal__image_caption");
 
 // Find all close buttons
 const closeButtons = document.querySelectorAll('.modal__close');
@@ -99,13 +99,13 @@ function getCardElement(cardData) {
 
   const cardImageEl = cardElement.querySelector('.card__image');
   const cardTitleEl = cardElement.querySelector('.card__title');
-  const likeButton = cardElement.querySelector('.card__like-button');
+  const likeButton = cardElement.querySelector('.card__like_button');
 
   likeButton.addEventListener('click', () => {
-    likeButton.classList.toggle('card__like-button_active');
+    likeButton.classList.toggle('card__like_button_active');
   });
 
-  const deleteButton = cardElement.querySelector('.card__delete-button');
+  const deleteButton = cardElement.querySelector('.card__delete_button');
   deleteButton.addEventListener('click', () => {
     cardElement.remove();
   });
