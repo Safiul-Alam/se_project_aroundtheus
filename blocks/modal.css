@@ -150,12 +150,13 @@
   top: calc(100% + 6px);
   transition: 0.3s;
 }
-.modal__input_type_error {
-  border-bottom: 1px solid #ff0000;
-}
 
 .modal__error_visible {
   visibility: visible;
+}
+
+.modal__input_type_error {
+  border-bottom: 1px solid #ff0000;
 }
 
 @media screen and (max-width: 900px) {
