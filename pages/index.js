@@ -113,7 +113,8 @@ profileEditBtn.addEventListener('click', () => {
   openPopUp(profileEditmodal);
 })
 
-const cardAddForm = cardAddModal.querySelector('#card-add-form');
+
+const cardAddForm = document.forms['card-add-form'];
 cardAddForm.addEventListener('submit', handleAddCardSubmit);
 
 const addNewCardBtn = document.querySelector('.profile__add-button');
@@ -151,19 +152,21 @@ initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
 
 
 
+// FormValidation
 const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
+
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
 
-//Profile Modal
+//Profile Modal validation
 const editProfileFormValidator = new FormValidator(config, profileEditForm);
 editProfileFormValidator.enableValidation();
 
-//cardAddModal
+//cardAddModal validation
 const cardAddFormValidator = new FormValidator(config, cardAddForm);
 cardAddFormValidator.enableValidation();
