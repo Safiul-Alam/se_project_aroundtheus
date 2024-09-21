@@ -1,6 +1,6 @@
 export default class Popup {
   constructor({ popupSelector}) {
-    this.popupElement = document.querySelector(popupSelector);
+    this._popupElement = document.querySelector(popupSelector);
   }
 
   open() {
@@ -8,14 +8,14 @@ export default class Popup {
   }
 
   close() {
-
+    this._popupElement.classList.toggle('modal_opened');
   }
 
   _handleEscClose() {
     // listen for esc button
   }
 
-  setEventListeners() {
+  setEventListeners(evt) {
     //sets event listeners
   }
 }
