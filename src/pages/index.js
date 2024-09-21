@@ -13,13 +13,13 @@ const cardSection = new Section({
     const cardEl = new Card(item, selectors.cardTemplate);
     cardSection.addItems(cardEl.getView());
   },
-  containerSelector: selectors.cardSelection,
+  selector: selectors.cardSelection,
 });
 
 
 
 //initialize all  instances
-CardSection.renderItems(initialCards);
+cardSection.renderItems(initialCards);
 
 
 

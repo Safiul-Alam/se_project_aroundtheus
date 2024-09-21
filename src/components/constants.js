@@ -29,6 +29,6 @@ export const initialCards = [
 
 export const selectors = {
   cardTemplate: '#card-template',
-  cardSelection: '.cards-container',
+  cardSelection: '.cards__list',
   // any other selectors you might need
 };
