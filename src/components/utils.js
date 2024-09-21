@@ -1,9 +1,4 @@
 
-
-
-
-
-
 export const closeModalOnEvent = (event) =>{
   if (event.key === "Escape" && event.type === "keydown") { //"keyup"
     const openedPopup = document.querySelector(".modal_opened");

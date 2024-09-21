@@ -86,8 +86,6 @@ function handleProfileEditSubmit(e) {
   profileDescription.textContent = profileDescriptionInput.value;
   closePopUp(profileEditmodal);
 }
-
-
 profileEditForm.addEventListener('submit', handleProfileEditSubmit);
 
 
@@ -102,7 +100,25 @@ function handleAddCardSubmit(e) {
   cardAddForm.reset();
 }
 
+function handlePreviewModal(data){
+  previewModalImage.src = data.link;
+  previewModalImage.alt = data.name;
+  previewCaption.textContent = data.name;
+  openPopUp(previewImageModal);
+}
 
+function createCard(data) {
+  const card = new Card(data, '#card-template', handlePreviewModal);
+  return card.getView();
+}
+function renderCard(cardData, cardListWrapper) {
+  const cardElement = createCard(cardData);
+  cardListWrapper.prepend(cardElement);
+}
+
+
+
+//Event Listeners
 profileEditBtn.addEventListener('click', () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
@@ -125,24 +141,8 @@ closeButtons.forEach((button) => {
 });
 
 
-function handlePreviewModal(data){
-  previewModalImage.src = data.link;
-  previewModalImage.alt = data.name;
-  previewCaption.textContent = data.name;
-  openPopUp(previewImageModal);
-}
 
-function createCard(data) {
-  const card = new Card(data, '#card-template', handlePreviewModal);
-  return card.getView();
-}
 
-function renderCard(cardData, cardListWrapper) {
-  const cardElement = createCard(cardData);
-  cardListWrapper.prepend(cardElement);
-}
-
-//Loops ----------------------------------------------------------------
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
 
 

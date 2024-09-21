@@ -5,7 +5,9 @@ import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import {initialCards, selectors} from "../components/constants.js";
-import { openPopUp, closePopUp, closeModalOnEvent } from '../components/utils.js';
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+
 
 // create instances of all the classes
 const cardSection = new Section({
@@ -15,12 +17,10 @@ const cardSection = new Section({
   },
   selector: selectors.cardSelection,
 });
-
-
-
-//initialize all  instances
 cardSection.renderItems(initialCards);
 
 
 
-// all the rest
+
+const imageModal = new PopupWithImage("#image-preview-modal");
+imageModal.setEventListeners();
