@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Around the U.S.</title>
     <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
 
   <body class="page">
@@ -13,15 +12,15 @@
       <header class="header page__section">
         <img
           class="header__logo"
-          src="./images/header-logo.svg"
           alt="Around the U.S. logo"
+          src="<%=require('./images/header-logo.svg')%>"
         />
       </header>
 
       <main class="main">
         <section class="profile page__section">
           <img
-            src="./images/jacques-cousteau.jpg"
+            src="<%=require('./images/jacques-cousteau.jpg') %>"
             alt="Avater"
             class="profile__image"
           />
@@ -101,7 +100,7 @@
       </div>
     </div>
 
-    <!--add modal-->
+    <!--add modal / add New card-->
     <div class="modal modal_add" id="card-add-modal">
       <div class="modal__container">
         <div class="modal__close" id="profile-add-modal-close"></div>

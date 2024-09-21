@@ -1,7 +1,8 @@
  import Card from "../components/Card.js";
  import FormValidator from "../components/FormValidator.js";
+ import './index.css'
 
-const initialCards = [
+ const initialCards = [
   {
     name: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
@@ -30,10 +31,6 @@ const initialCards = [
 
 
 
-
-
-
-
 const cardListEl = document.querySelector('.cards__list');
 const profileEditBtn = document.querySelector('#profile-edit-button');
 const profileEditmodal = document.querySelector('#profile-edit-modal');
@@ -41,8 +38,10 @@ const cardAddModal = document.querySelector('#card-add-modal');
 
 const profileTitleInput = document.querySelector('#profile-title-input');
 const profileDescriptionInput = document.querySelector('#profile-description-input');
+
 const cardTitleInput = cardAddModal.querySelector('#card-title-input');
 const cardUrlInput = cardAddModal.querySelector('#card-url-input');
+
 const previewImageModal = document.querySelector("#image-preview-modal");
 const previewModalImage = document.querySelector(".modal__image");
 const previewCaption = document.querySelector(".modal__caption");
@@ -68,7 +67,18 @@ function openPopUp(modal) {
   document.addEventListener('click', closeModalOnEvent);
 }
 
+function closeModalOnEvent(event) {
+  if (event.key === "Escape" && event.type === "keydown") { //"keyup"
+    const openedPopup = document.querySelector(".modal_opened");
+    closePopUp(openedPopup);
+  }
 
+  if (event.type === "click") {
+    if (event.target.classList.contains("modal")) {
+      closePopUp(event.target);
+    }
+  }
+}
 
 function handleProfileEditSubmit(e) {
   e.preventDefault();
@@ -92,27 +102,12 @@ function handleAddCardSubmit(e) {
   cardAddForm.reset();
 }
 
-function closeModalOnEvent(event) {
-  if (event.key === "Escape" && event.type === "keydown") {
-    const openedPopup = document.querySelector(".modal_opened");
-    closePopUp(openedPopup);
-  }
-
-  if (event.type === "click") {
-    if (event.target.classList.contains("modal")) {
-      closePopUp(event.target);
-    }
-  }
-}
-
-
 
 profileEditBtn.addEventListener('click', () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   openPopUp(profileEditmodal);
 })
-
 
 const cardAddForm = document.forms['card-add-form'];
 cardAddForm.addEventListener('submit', handleAddCardSubmit);
@@ -152,6 +147,15 @@ initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
 
 
 
+//Profile Modal validation
+const editProfileFormValidator = new FormValidator(config, profileEditForm);
+editProfileFormValidator.enableValidation();
+
+//cardAddModal validation
+const cardAddFormValidator = new FormValidator(config, cardAddForm);
+cardAddFormValidator.enableValidation();
+
+
 // FormValidation
 const config = {
   formSelector: ".modal__form",
@@ -162,11 +166,3 @@ const config = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
-
-//Profile Modal validation
-const editProfileFormValidator = new FormValidator(config, profileEditForm);
-editProfileFormValidator.enableValidation();
-
-//cardAddModal validation
-const cardAddFormValidator = new FormValidator(config, cardAddForm);
-cardAddFormValidator.enableValidation();
