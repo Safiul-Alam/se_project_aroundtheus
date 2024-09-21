@@ -2,10 +2,10 @@ import Popup from "./Popup.js";
 
 export default class PopupWithImage extends Popup {
   constructor(popupSelector) {
-    super(popupSelector);
+    super({popupSelector});
 
-    this._imageEl = this._modalElement.querySelector(".modal__image");
-    this._titleEl = this._modalElement.querySelector(".modal__caption");
+    this._imageEl = this._popupElement.querySelector(".modal__image");
+    this._titleEl = this._popupElement.querySelector(".modal__caption");
   }
 
   open(cardData) {

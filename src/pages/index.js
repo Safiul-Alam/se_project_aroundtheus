@@ -20,7 +20,11 @@ const cardSection = new Section({
 cardSection.renderItems(initialCards);
 
 
-
-
 const imageModal = new PopupWithImage("#image-preview-modal");
 imageModal.setEventListeners();
+
+
+//index.js
+// const newCardPopup = new PopupWithForm('card-add-modal', () => {});
+// newCardPopup.open();
+// newCardPopup.close();

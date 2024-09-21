@@ -28,7 +28,7 @@ export default class Popup {
       this.close();
     });
 
-    this._modalElement.addEventListener("click", (evt) => {
+    this._popupElement.addEventListener("click", (evt) => {
       if (evt.target === evt.currentTarget) {
         this.close();
       }
