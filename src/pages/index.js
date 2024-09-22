@@ -29,12 +29,18 @@ function openPreviewModal(cardData) {
 
 
 // Add Card Modal
-function handleAddCardFormSubmit(values){
-  console.log(values);
+function handleAddCardSubmit(e) {
+  e.preventDefault();
+  const name = cardTitleInput.value;
+  const link = cardUrlInput.value;
+  renderCard({name, link}, cardListEl);
+  closePopUp(cardAddModal);
+
+  cardAddForm.reset();
 }
 const newCardModal = new PopupWithForm(
   "#card-add-modal",
-  handleAddCardFormSubmit
+  handleAddCardSubmit
 );
 newCardModal.setEventListeners();
 
