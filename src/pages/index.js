@@ -12,7 +12,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 // create instances of all the classes
 const cardSection = new Section({
   renderer: (item) => {
-    const cardEl = new Card(item, selectors.cardTemplate);
+    const cardEl = new Card(item, selectors.cardTemplate, openPreviewModal);
     cardSection.addItems(cardEl.getView());
   },
   selector: selectors.cardSelection,
@@ -20,11 +20,25 @@ const cardSection = new Section({
 cardSection.renderItems(initialCards);
 
 
+// Image Modal
 const imageModal = new PopupWithImage("#image-preview-modal");
 imageModal.setEventListeners();
+function openPreviewModal(cardData) {
+  imageModal.open(cardData);
+}
 
 
-//index.js
-// const newCardPopup = new PopupWithForm('card-add-modal', () => {});
-// newCardPopup.open();
-// newCardPopup.close();
+// Add Card Modal
+const newCardModal = new PopupWithForm(
+  "#card-add-modal",
+  handleAddCardFormSubmit
+);
+newCardModal.setEventListeners();
+
+
+// Profile Modal
+const profileModal = new PopupWithForm(
+  "#profile-edit-modal",
+  handleProfileFormSubmit
+);
+profileModal.setEventListeners();
