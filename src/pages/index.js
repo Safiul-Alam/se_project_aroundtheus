@@ -20,7 +20,9 @@ const cardSection = new Section({
 cardSection.renderItems(initialCards);
 
 
-// Image Modal
+
+
+// Image Modal  ----------------------------------------------------------------
 const imageModal = new PopupWithImage("#image-preview-modal");
 imageModal.setEventListeners();
 function openPreviewModal(cardData) {
@@ -28,6 +30,8 @@ function openPreviewModal(cardData) {
 }
 
 
+
+//----------------------------------------------------------------
 // Add Card Modal
 // Function to handle form submission and add a new card
 function handleAddCardSubmit(formValues) {
@@ -41,22 +45,18 @@ function handleAddCardSubmit(formValues) {
   newCardModal.close();
 }
 
-// Instance of Section for existing cards
-// const cardSection = new Section({
-//   renderer: (item) => {
-//       const cardEl = new Card(item, selectors.cardTemplate, handlePreviewModal);
-//       cardSection.addItem(cardEl.getView());
-//   },
-//   selector: selectors.cardSection,
-// });
-// cardSection.renderItems(initialCards);
-
 
 // Instance of PopupWithForm for adding a new card
 const newCardModal = new PopupWithForm("#card-add-modal", handleAddCardSubmit);
 newCardModal.setEventListeners();
 
+const addCardButton = document.querySelector('.profile__add-button');
+addCardButton.addEventListener("click", () => {
+  newCardModal.open();
+});
 
+
+//----------------------------------------------------------------
 // Profile Modal
 function handleProfileFormSubmit(values){
   console.log(values);
@@ -73,7 +73,7 @@ profileModal.setEventListeners();
 
 
 
-
+//----------------------------------------------------------------
 //Profile Modal validation
 const editProfileFormValidator = new FormValidator(config, profileEditForm);
 editProfileFormValidator.enableValidation();
