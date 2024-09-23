@@ -22,7 +22,8 @@ cardSection.renderItems(initialCards);
 
 
 
-// Image Modal  ----------------------------------------------------------------
+//----------------------------------------------------------------
+// Image Modal
 const imageModal = new PopupWithImage("#image-preview-modal");
 imageModal.setEventListeners();
 function openPreviewModal(cardData) {
@@ -33,14 +34,14 @@ function openPreviewModal(cardData) {
 
 //----------------------------------------------------------------
 // Add Card Modal
+
 // Function to handle form submission and add a new card
-function handleAddCardSubmit(formValues) {
-  const { title, url } = formValues;
+function handleAddCardSubmit({ title, url }) {
+  // const { title, url } = formValues;
   const newCardData = { name: title, link: url };
 
-  const newCard = new Card(newCardData, selectors.cardTemplate, handlePreviewModal);
-  const newCardElement = newCard.getView();
-  cardSection.addItems(newCardElement);
+  const newCard = new Card(newCardData, selectors.cardTemplate, openPreviewModal);
+  cardSection.addItems(newCard.getView());
 
   newCardModal.close();
 }
@@ -58,14 +59,23 @@ addCardButton.addEventListener("click", () => {
 
 //----------------------------------------------------------------
 // Profile Modal
-function handleProfileFormSubmit(values){
-  console.log(values);
+function handleProfileFormSubmit(formValues) {
+  const { name, description } = formValues;
+  console.log('Profile Data:', { name, description });
 }
+
+// create an instance of PopupWithForm for the profile modal
 const profileModal = new PopupWithForm(
-  "#profile-edit-modal",
+  { popupSelector: "#profile-edit-modal" },
   handleProfileFormSubmit
 );
 profileModal.setEventListeners();
+
+// open the profile modal on button click
+const openProfileModalButton = document.querySelector('.profile__edit-button');
+openProfileModalButton.addEventListener("click", () => {
+  profileModal.open();
+});
 
 
 
