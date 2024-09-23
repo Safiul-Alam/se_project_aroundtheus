@@ -29,6 +29,7 @@ export const initialCards = [
 
 export const cardAddForm = document.forms['card-add-form'];
 export const profileEditForm = document.forms['profile-edit-form'];
+export const cardListEl = document.querySelector('.cards__list');
 
 
 
@@ -39,7 +40,7 @@ export const selectors = {
 };
 
 // FormValidation
-const config = {
+export const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",

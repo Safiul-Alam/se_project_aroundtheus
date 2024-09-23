@@ -4,7 +4,7 @@ import './index.css';
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
-import {initialCards, selectors, config, cardAddForm, profileEditForm}  from "../components/constants.js";
+import {initialCards, selectors, config, cardAddForm, profileEditForm, cardListEl}  from "../components/constants.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 
@@ -29,19 +29,30 @@ function openPreviewModal(cardData) {
 
 
 // Add Card Modal
-function handleAddCardSubmit(e) {
-  e.preventDefault();
-  const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
-  renderCard({name, link}, cardListEl);
-  close(cardAddModal);
+// Function to handle form submission and add a new card
+function handleAddCardSubmit(formValues) {
+  const { title, url } = formValues;
+  const newCardData = { name: title, link: url };
 
-  cardAddForm.reset();
+  const newCard = new Card(newCardData, selectors.cardTemplate, handlePreviewModal);
+  const newCardElement = newCard.getView();
+  cardSection.addItem(newCardElement);
+
+  newCardModal.close();
 }
-const newCardModal = new PopupWithForm(
-  "#card-add-modal",
-  handleAddCardSubmit
-);
+
+// Instance of Section for existing cards
+// const cardSection = new Section({
+//   renderer: (item) => {
+//       const cardEl = new Card(item, selectors.cardTemplate, handlePreviewModal);
+//       cardSection.addItem(cardEl.getView());
+//   },
+//   selector: selectors.cardSection,
+// });
+// cardSection.renderItems(initialCards);
+
+// Instance of PopupWithForm for adding a new card
+const newCardModal = new PopupWithForm("#card-add-modal", handleAddCardSubmit);
 newCardModal.setEventListeners();
 
 
