@@ -36,7 +36,7 @@ function handleAddCardSubmit(formValues) {
 
   const newCard = new Card(newCardData, selectors.cardTemplate, handlePreviewModal);
   const newCardElement = newCard.getView();
-  cardSection.addItem(newCardElement);
+  cardSection.addItems(newCardElement);
 
   newCardModal.close();
 }
@@ -50,6 +50,7 @@ function handleAddCardSubmit(formValues) {
 //   selector: selectors.cardSection,
 // });
 // cardSection.renderItems(initialCards);
+
 
 // Instance of PopupWithForm for adding a new card
 const newCardModal = new PopupWithForm("#card-add-modal", handleAddCardSubmit);
