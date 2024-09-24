@@ -4,10 +4,11 @@ import './index.css';
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
-import {initialCards, selectors, config, cardAddForm, profileEditForm, cardListEl}
+import {initialCards, selectors, validationSettings, cardAddForm, profileEditForm, cardListEl}
       from "../components/constants.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from '../components/UserInfo.js';
 
 
 
@@ -60,11 +61,16 @@ addCardButton.addEventListener("click", () => {
 });
 
 
+
+
 //----------------------------------------------------------------
 // Profile edit Modal
-function handleProfileFormSubmit(formValues) {
-  const { name, description } = formValues;
-  console.log('Profile Data:', { name, description });
+
+function handleProfileFormSubmit(formInput) {
+  // const { name, description } = formValues;
+  // console.log('Profile Data:', { name, description });
+  userInfo.setUserInfo(formInput);
+  profileModal.close();
 }
 
 // create an instance of PopupWithForm for the profile modal
@@ -73,21 +79,32 @@ profileModal.setEventListeners();
 
 // open the profile modal on button click
 const openProfileModalButton = document.querySelector('.profile__edit-button');
+
 openProfileModalButton.addEventListener("click", () => {
   profileModal.open();
+  const input = userInfo.getUserInfo();
+  profileModal.setUserInfo(input);
+
+  profileModal.close();
 });
 
 
-
-
+//userInfo
+const profileName = ".profile__title";
+const profileDescription = ".profile__description";
+// Create user info instance
+const userInfo = new UserInfo({
+  userName: profileName,
+  userJob: profileDescription,
+});
 
 
 
 //----------------------------------------------------------------
 //Profile Modal validation
-const editProfileFormValidator = new FormValidator(config, profileEditForm);
+const editProfileFormValidator = new FormValidator(validationSettings, profileEditForm);
 editProfileFormValidator.enableValidation();
 
 //cardAddModal validation
-const cardAddFormValidator = new FormValidator(config, cardAddForm);
+const cardAddFormValidator = new FormValidator(validationSettings, cardAddForm);
 cardAddFormValidator.enableValidation();

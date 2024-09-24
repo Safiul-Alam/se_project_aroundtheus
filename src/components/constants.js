@@ -40,7 +40,7 @@ export const selectors = {
 };
 
 // FormValidation
-export const config = {
+export const validationSettings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__button",
