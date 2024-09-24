@@ -4,9 +4,12 @@ import './index.css';
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
-import {initialCards, selectors, config, cardAddForm, profileEditForm, cardListEl}  from "../components/constants.js";
+import {initialCards, selectors, config, cardAddForm, profileEditForm, cardListEl}
+      from "../components/constants.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+
+
 
 
 // create instances of all the classes
@@ -58,17 +61,14 @@ addCardButton.addEventListener("click", () => {
 
 
 //----------------------------------------------------------------
-// Profile Modal
+// Profile edit Modal
 function handleProfileFormSubmit(formValues) {
   const { name, description } = formValues;
   console.log('Profile Data:', { name, description });
 }
 
 // create an instance of PopupWithForm for the profile modal
-const profileModal = new PopupWithForm(
-  { popupSelector: "#profile-edit-modal" },
-  handleProfileFormSubmit
-);
+const profileModal = new PopupWithForm( "#profile-edit-modal" , handleProfileFormSubmit);
 profileModal.setEventListeners();
 
 // open the profile modal on button click
