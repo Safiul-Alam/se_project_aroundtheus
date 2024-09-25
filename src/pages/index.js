@@ -66,10 +66,12 @@ addCardButton.addEventListener("click", () => {
 //----------------------------------------------------------------
 // Profile edit Modal
 
-function handleProfileFormSubmit(formInput) {
-  // const { name, description } = formValues;
+function handleProfileFormSubmit(formValues) {
+  const { name, description } = formValues;
   // console.log('Profile Data:', { name, description });
-  userInfo.setUserInfo(formInput);
+  document.querySelector('.profile__title').textContent = name;
+  document.querySelector('.profile__description').textContent = description;
+  userInfo.setUserInfo(formValues);
   profileModal.close();
 }
 
@@ -79,13 +81,10 @@ profileModal.setEventListeners();
 
 // open the profile modal on button click
 const openProfileModalButton = document.querySelector('.profile__edit-button');
-
 openProfileModalButton.addEventListener("click", () => {
-  profileModal.open();
   const input = userInfo.getUserInfo();
-  profileModal.setUserInfo(input);
-
-  profileModal.close();
+  profileModal.setInputValues(input);
+  profileModal.open();
 });
 
 
