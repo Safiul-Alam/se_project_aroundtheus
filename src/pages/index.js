@@ -66,13 +66,23 @@ addCardButton.addEventListener("click", () => {
 //----------------------------------------------------------------
 // Profile edit Modal
 
+// Function to handle form submission and update the profile
 function handleProfileFormSubmit(formValues) {
   const { name, description } = formValues;
-  // console.log('Profile Data:', { name, description });
-  document.querySelector('.profile__title').textContent = name;
-  document.querySelector('.profile__description').textContent = description;
-  userInfo.setUserInfo(formValues);
-  profileModal.close();
+
+  // Update these DOM elements with correct class names
+  const profileNameEl = document.querySelector('.profile__title');
+  const profileDescriptionEl = document.querySelector('.profile__description');
+
+  if (profileNameEl && profileDescriptionEl) {
+    profileNameEl.textContent = name;
+    profileDescriptionEl.textContent = description;
+    profileModal.close(); // Close the modal after updating the profile
+  } else {
+    console.error('Profile title or description element not found');
+  }
+  console.log('Profile Title Element:', profileNameEl);
+  console.log('Profile Description Element:', profileDescriptionEl);
 }
 
 // create an instance of PopupWithForm for the profile modal
@@ -82,9 +92,10 @@ profileModal.setEventListeners();
 // open the profile modal on button click
 const openProfileModalButton = document.querySelector('.profile__edit-button');
 openProfileModalButton.addEventListener("click", () => {
-  const input = userInfo.getUserInfo();
-  profileModal.setInputValues(input);
+  // const input = userInfo.getUserInfo();
+  // profileModal.setInputValues(input);
   profileModal.open();
+
 });
 
 
