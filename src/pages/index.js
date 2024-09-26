@@ -30,6 +30,7 @@ cardSection.renderItems(initialCards);
 // Image Modal
 const imageModal = new PopupWithImage("#image-preview-modal");
 imageModal.setEventListeners();
+
 function openPreviewModal(cardData) {
   imageModal.open(cardData);
 }
@@ -50,7 +51,6 @@ function handleAddCardSubmit({ title, url }) {
   newCardModal.close();
 }
 
-
 // Instance of PopupWithForm for adding a new card
 const newCardModal = new PopupWithForm("#card-add-modal", handleAddCardSubmit);
 newCardModal.setEventListeners();
@@ -67,22 +67,11 @@ addCardButton.addEventListener("click", () => {
 // Profile edit Modal
 
 // Function to handle form submission and update the profile
-function handleProfileFormSubmit(formValues) {
-  const { name, description } = formValues;
-
-  // Update these DOM elements with correct class names
-  const profileNameEl = document.querySelector('.profile__title');
-  const profileDescriptionEl = document.querySelector('.profile__description');
-
-  if (profileNameEl && profileDescriptionEl) {
-    profileNameEl.textContent = name;
-    profileDescriptionEl.textContent = description;
-    profileModal.close(); // Close the modal after updating the profile
-  } else {
-    console.error('Profile title or description element not found');
-  }
-  console.log('Profile Title Element:', profileNameEl);
-  console.log('Profile Description Element:', profileDescriptionEl);
+function handleProfileFormSubmit(input) {
+  console.log(123123);
+  console.log(input);
+  userInfo.setUserInfo(input);
+  profileModal.close();
 }
 
 // create an instance of PopupWithForm for the profile modal
@@ -92,10 +81,9 @@ profileModal.setEventListeners();
 // open the profile modal on button click
 const openProfileModalButton = document.querySelector('.profile__edit-button');
 openProfileModalButton.addEventListener("click", () => {
-  // const input = userInfo.getUserInfo();
-  // profileModal.setInputValues(input);
+  const input = userInfo.getUserInfo();
+  profileModal.setInputValues(input);
   profileModal.open();
-
 });
 
 
@@ -103,10 +91,7 @@ openProfileModalButton.addEventListener("click", () => {
 const profileName = ".profile__title";
 const profileDescription = ".profile__description";
 // Create user info instance
-const userInfo = new UserInfo({
-  userName: profileName,
-  userJob: profileDescription,
-});
+const userInfo = new UserInfo({ userName: profileName, userJob: profileDescription});
 
 
 
