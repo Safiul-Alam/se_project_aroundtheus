@@ -49,6 +49,7 @@ function setEventListeners(formEl, options) {
   });
 }
 
+
 function enableValidation(options) {
   const formEls = [...document.querySelectorAll(options.formSelector)];
   formEls.forEach((formEl) => {
