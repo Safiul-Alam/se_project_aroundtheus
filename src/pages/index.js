@@ -64,7 +64,6 @@ newCardModal.setEventListeners();
 
 const addCardButton = document.querySelector('.profile__add-button');
 addCardButton.addEventListener("click", () => {
-  cardAddFormValidator.resetValidation()
   newCardModal.open();
 });
 
