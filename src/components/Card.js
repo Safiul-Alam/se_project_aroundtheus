@@ -41,7 +41,6 @@ export default class Card {
     });
   }
 
-
   getView() {
     this._cardElement = this._getTemplate();
     this._likeButton = this._cardElement.querySelector(".card__like-button");
