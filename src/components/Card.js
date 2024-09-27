@@ -43,7 +43,7 @@ export default class Card {
 
   getView() {
     this._cardElement = this._getTemplate();
-    this._likeButton = this._cardElement.querySelector(".card__like-button");
+    this._likeButton = this._cardElement.querySelector(".card__like_button");
     const cardImage = this._cardElement.querySelector(".card__image");
     cardImage.src = this._link;
     cardImage.alt = this._name;
