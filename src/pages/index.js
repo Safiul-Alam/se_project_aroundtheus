@@ -12,12 +12,17 @@ import UserInfo from '../components/UserInfo.js';
 
 
 
+function createCard(data) {
+  const card = new Card(data, '#card-template', openPreviewModal);
+  return card.getView();
+}
 
-// create instances of card
+
+
 const cardSection = new Section({
   renderer: (item) => {
-    const cardEl = new Card(item, selectors.cardTemplate, openPreviewModal);
-    cardSection.addItems(cardEl.getView());
+    const cardEl = createCard(item);
+    cardSection.addItem(cardEl);
   },
   selector: selectors.cardSelection,
 });
@@ -47,8 +52,8 @@ function handleAddCardSubmit({ title, url }) {
   // const { title, url } = formValues;
   const newCardData = { name: title, link: url };
 
-  const newCard = new Card(newCardData, selectors.cardTemplate, openPreviewModal);
-  cardSection.addItems(newCard.getView());
+  const newCard = createCard(newCardData);
+  cardSection.addItem(newCard);
 
   newCardModal.close();
 }
