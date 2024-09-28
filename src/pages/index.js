@@ -4,7 +4,7 @@ import './index.css';
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
-import {initialCards, selectors, validationSettings, cardAddForm, profileEditForm, cardListEl}
+import {initialCards, selectors, validationSettings, cardAddForm, profileEditForm}
       from "../utils/constants.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
@@ -16,8 +16,6 @@ function createCard(data) {
   const card = new Card(data, '#card-template', openPreviewModal);
   return card.getView();
 }
-
-
 
 const cardSection = new Section({
   renderer: (item) => {
@@ -51,7 +49,6 @@ cardAddFormValidator.enableValidation();
 function handleAddCardSubmit({ title, url }) {
   // const { title, url } = formValues;
   const newCardData = { name: title, link: url };
-
   const newCard = createCard(newCardData);
   cardSection.addItem(newCard);
 
