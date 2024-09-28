@@ -53,6 +53,7 @@ function handleAddCardSubmit({ title, url }) {
   cardSection.addItem(newCard);
 
   newCardModal.close();
+  cardAddFormValidator.disableButton();
 }
 
 // Instance of PopupWithForm for adding a new card
