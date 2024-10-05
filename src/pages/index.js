@@ -9,7 +9,17 @@ import {initialCards, selectors, validationSettings, cardAddForm, profileEditFor
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from '../components/UserInfo.js';
+import Api from "../components/Api.js";
 
+
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "13ca465c-2480-4978-b0a0-252ae6127405",
+    "Content-Type": "application/json"
+  }
+});
 
 
 function createCard(data) {
@@ -49,11 +59,24 @@ cardAddFormValidator.enableValidation();
 function handleAddCardSubmit({ title, url }) {
   // const { title, url } = formValues;
   const newCardData = { name: title, link: url };
-  const newCard = createCard(newCardData);
-  cardSection.addItem(newCard);
 
-  newCardModal.close();
-  cardAddFormValidator.disableButton();
+  // const newCard = createCard(newCardData);
+  // cardSection.addItem(newCard);
+  // newCardModal.close();
+  // cardAddFormValidator.disableButton();
+
+    // Add new card through API
+    api.uploadCard(newCardData)
+    .then(card => {
+      const newCard = createCard(card);
+      cardSection.addItem(newCard);
+      newCardModal.close();
+      cardAddFormValidator.disableButton();
+    })
+    .catch(error => {
+      console.error('Error adding card:', error);
+    });
+
 }
 
 // Instance of PopupWithForm for adding a new card
@@ -77,8 +100,17 @@ editProfileFormValidator.enableValidation();
 
 // Function to handle form submission and update the profile
 function handleProfileFormSubmit(input) {
-  userInfo.setUserInfo(input);
-  profileModal.close();
+  // userInfo.setUserInfo(input);
+  // profileModal.close();
+
+  api.setUserInfo(input)
+  .then(() => {
+    userInfo.setUserInfo(input);
+    profileModal.close();
+  })
+  .catch(error => {
+    console.error('Error updating profile:', error);
+  });
 }
 
 // create an instance of PopupWithForm for the profile modal

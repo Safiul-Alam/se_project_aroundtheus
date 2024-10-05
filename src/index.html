@@ -100,6 +100,26 @@
       </div>
     </div>
 
+    <!-- Profile Avatar edit modal-->
+    <div class="modal" id="avatar-edit-modal">
+      <div class="modal__container">
+        <button class="modal__close"></button>
+        <h2 class="modal__heading">Change profile picture</h2>
+        <form class="modal__form" id="avatar-edit-form">
+          <input
+            type="url"
+            name="Link"
+            id="modal-avatar"
+            class="modal__input"
+            placeholder="Image link"
+            required
+          />
+          <span class="modal__input-error" id="modal-avatar-error"></span>
+          <button class="modal__button" type="submit">Save</button>
+        </form>
+      </div>
+    </div>
+
     <!--Card add modal / add New card-->
     <div class="modal modal_add" id="card-add-modal">
       <div class="modal__container">
@@ -148,6 +168,15 @@
         <div class="modal__close" id="preview-modal-close"></div>
         <img class="modal__image" src="" alt="" />
         <p class="modal__caption"></p>
+      </div>
+    </div>
+
+    <!--Card delete confirm modal-->
+    <div class="modal confirm-modal" id="confirm-modal">
+      <div class="modal__container">
+        <button class="modal__close"></button>
+        <h2 class="modal__heading">Are you sure?</h2>
+        <button class="modal__button" type="submit">Yes</button>
       </div>
     </div>
 
