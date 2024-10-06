@@ -57,27 +57,21 @@ cardAddFormValidator.enableValidation();
 
 // Function to handle form submission and add a new card
 function handleAddCardSubmit({ title, url }) {
-  // const { title, url } = formValues;
-  const newCardData = { name: title, link: url };
+  const newCardData = { Title: title, Link: url };
 
-  // const newCard = createCard(newCardData);
-  // cardSection.addItem(newCard);
-  // newCardModal.close();
-  // cardAddFormValidator.disableButton();
-
-    // Add new card through API
-    api.uploadCard(newCardData)
+  // Add new card through API
+  api.uploadCard(newCardData)
     .then(card => {
       const newCard = createCard(card);
-      cardSection.addItem(newCard);
-      newCardModal.close();
-      cardAddFormValidator.disableButton();
+      cardSection.addItem(newCard);  // Add the new card to the section
+      newCardModal.close();          // Close the modal after adding the card
+      cardAddFormValidator.disableButton(); // Disable the form submission button
     })
     .catch(error => {
       console.error('Error adding card:', error);
     });
-
 }
+
 
 // Instance of PopupWithForm for adding a new card
 const newCardModal = new PopupWithForm("#card-add-modal", handleAddCardSubmit);
@@ -100,17 +94,17 @@ editProfileFormValidator.enableValidation();
 
 // Function to handle form submission and update the profile
 function handleProfileFormSubmit(input) {
-  // userInfo.setUserInfo(input);
-  // profileModal.close();
+  userInfo.setUserInfo(input);
+  profileModal.close();
 
-  api.setUserInfo(input)
-  .then(() => {
-    userInfo.setUserInfo(input);
-    profileModal.close();
-  })
-  .catch(error => {
-    console.error('Error updating profile:', error);
-  });
+  // api.setUserInfo(input)
+  // .then(() => {
+  //   userInfo.setUserInfo(input);
+  //   profileModal.close();
+  // })
+  // .catch(error => {
+  //   console.error('Error updating profile:', error);
+  // });
 }
 
 // create an instance of PopupWithForm for the profile modal
@@ -135,5 +129,4 @@ const userInfo = new UserInfo({ userName: profileName, userJob: profileDescripti
 
 
 
-//----------------------------------------------------------------
 
