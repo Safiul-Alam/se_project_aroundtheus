@@ -37,9 +37,8 @@ const cardSection = new Section({
   selector: selectors.cardSelection,
 });
 // cardSection.renderItems(initialCards);
-
 api.getInitialCards()
-  .then((res) => cardSection.renderItems(res, true))
+  .then((res) => cardSection.renderItems(res))
   .catch((err) => alert(err));
 
 
@@ -101,19 +100,25 @@ addCardButton.addEventListener("click", () => {
 const editProfileFormValidator = new FormValidator(validationSettings, profileEditForm);
 editProfileFormValidator.enableValidation();
 
+//userInfo
+const profileName = ".profile__title";
+const profileDescription = ".profile__description";
+// Create user info instance
+const userInfo = new UserInfo({ userName: profileName, userJob: profileDescription});
+
 // Function to handle form submission and update the profile
 function handleProfileFormSubmit(input) {
-  userInfo.setUserInfo(input);
-  profileModal.close();
+  // userInfo.setUserInfo(input);
+  // profileModal.close();
 
-  // api.setUserInfo(input)
-  // .then(() => {
-  //   userInfo.setUserInfo(input);
-  //   profileModal.close();
-  // })
-  // .catch(error => {
-  //   console.error('Error updating profile:', error);
-  // });
+  api.setUserInfo(input)
+  .then(() => {
+    userInfo.setUserInfo(input);
+    profileModal.close();
+  })
+  .catch(error => {
+    console.error('Error updating profile:', error);
+  });
 }
 
 // create an instance of PopupWithForm for the profile modal
@@ -130,11 +135,7 @@ openProfileModalButton.addEventListener("click", () => {
 });
 
 
-//userInfo
-const profileName = ".profile__title";
-const profileDescription = ".profile__description";
-// Create user info instance
-const userInfo = new UserInfo({ userName: profileName, userJob: profileDescription});
+
 
 
 
