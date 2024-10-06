@@ -22,6 +22,8 @@ const api = new Api({
 });
 
 
+
+
 function createCard(data) {
   const card = new Card(data, '#card-template', openPreviewModal);
   return card.getView();
@@ -34,7 +36,11 @@ const cardSection = new Section({
   },
   selector: selectors.cardSelection,
 });
-cardSection.renderItems(initialCards);
+// cardSection.renderItems(initialCards);
+
+api.getInitialCards()
+  .then((res) => cardSection.renderItems(res, true))
+  .catch((err) => alert(err));
 
 
 //----------------------------------------------------------------
@@ -71,6 +77,9 @@ function handleAddCardSubmit({ title, url }) {
       console.error('Error adding card:', error);
     });
 }
+
+
+
 
 
 // Instance of PopupWithForm for adding a new card
