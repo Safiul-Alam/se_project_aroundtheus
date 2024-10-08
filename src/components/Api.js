@@ -25,10 +25,10 @@ export default class Api {
     return this._request(`/users/me`, {});
   }
 
-  setUserInfo({ name, desc }) {
+  setUserInfo({ modalTitle, description }) {
     return this._request(`/users/me`, {
       method: "PATCH",
-      body: JSON.stringify({ modalTitle: name, description: desc }),
+      body: JSON.stringify({ name: modalTitle, about: description }),
     });
   }
 

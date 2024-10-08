@@ -10,6 +10,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from '../components/UserInfo.js';
 import Api from "../components/Api.js";
+import { PopupWithConfirmation } from '../components/popupWithConfirmation.js';
 
 
 
@@ -25,7 +26,7 @@ const api = new Api({
 
 
 function createCard(data) {
-  const card = new Card(data, '#card-template', openPreviewModal);
+  const card = new Card(data, '#card-template', openPreviewModal, handleCardDelete);
   return card.getView();
 }
 
@@ -38,7 +39,9 @@ const cardSection = new Section({
 });
 // cardSection.renderItems(initialCards);
 api.getInitialCards()
-  .then((res) => cardSection.renderItems(res))
+  .then((res) => {
+    console.log(res)
+    cardSection.renderItems(res)})
   .catch((err) => alert(err));
 
 
@@ -76,9 +79,6 @@ function handleAddCardSubmit({ title, url }) {
       console.error('Error adding card:', error);
     });
 }
-
-
-
 
 
 // Instance of PopupWithForm for adding a new card
@@ -136,6 +136,19 @@ openProfileModalButton.addEventListener("click", () => {
 
 
 
+function handleCardDelete(card) {
+  deleteConfirmationModal.open();
+  card.setSubmitAction(()=>{
+    // card._id
+    api.deleteCard(card._id);
+  })
+}
+
+
+
+// Profile delete confirm Modal
+
+const deleteConfirmationModal = new PopupWithConfirmation ('.confirm-modal', handleCardDelete );
 
 
 
