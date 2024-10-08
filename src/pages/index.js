@@ -150,7 +150,7 @@ function handleCardDelete(card) {
 
 // const deleteConfirmationModal = new PopupWithConfirmation ('.confirm-modal', handleCardDelete );
 
-const confirmPopup = new PopupWithConfirmation("#confirm-modal", (cardData, evt) => {
+const confirmPopup = new PopupWithConfirmation("#modal-confirm", (cardData, evt) => {
   evt.preventDefault();
   api.deleteCard(cardData.cardId)
     .then(() => {
