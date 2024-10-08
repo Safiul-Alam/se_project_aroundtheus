@@ -148,8 +148,20 @@ function handleCardDelete(card) {
 
 // Profile delete confirm Modal
 
-const deleteConfirmationModal = new PopupWithConfirmation ('.confirm-modal', handleCardDelete );
+// const deleteConfirmationModal = new PopupWithConfirmation ('.confirm-modal', handleCardDelete );
 
+const confirmPopup = new PopupWithConfirmation("#confirm-modal", (cardData, evt) => {
+  evt.preventDefault();
+  api.deleteCard(cardData.cardId)
+    .then(() => {
+      cardData.cardEl.remove();
+      cardData.cardEl = null;
+      confirmPopup.close();
+    })
+    .catch((err) => alert(err))
+    .finally(() => confirmPopup.resetButtonText());
+});
+confirmPopup.setEventListeners();
 
 
 

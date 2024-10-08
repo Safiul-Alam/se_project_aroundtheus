@@ -108,6 +108,21 @@
   text-align: center;
 }
 
+/* Confirmation */
+#confirmation-modal {
+  width: 430px;
+  height: 181px;
+}
+
+#confirmation-modal-button {
+  width: 385px;
+  margin-left: 20px;
+}
+
+#modal-heading-confirm {
+  position: center;
+}
+
 .modal__button:hover {
   cursor: pointer;
 }

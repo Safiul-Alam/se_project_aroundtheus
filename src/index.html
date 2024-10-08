@@ -100,26 +100,6 @@
       </div>
     </div>
 
-    <!-- Profile Avatar edit modal-->
-    <div class="modal" id="avatar-edit-modal">
-      <div class="modal__container">
-        <button class="modal__close"></button>
-        <h2 class="modal__heading">Change profile picture</h2>
-        <form class="modal__form" id="avatar-edit-form">
-          <input
-            type="url"
-            name="Link"
-            id="modal-avatar"
-            class="modal__input"
-            placeholder="Image link"
-            required
-          />
-          <span class="modal__input-error" id="modal-avatar-error"></span>
-          <button class="modal__button" type="submit">Save</button>
-        </form>
-      </div>
-    </div>
-
     <!--Card add modal / add New card-->
     <div class="modal modal_add" id="card-add-modal">
       <div class="modal__container">
@@ -171,12 +151,45 @@
       </div>
     </div>
 
+    <!-- Profile Avatar edit modal-->
+    <div class="modal" id="edit-avatar-modal">
+      <div class="modal__container" id="edit-avatar-modal-container">
+        <button class="modal__close" id="edit-avatar-close"></button>
+        <h2 class="modal__heading">Change Profile Picture</h2>
+        <form class="modal__form" id="edit-avatar-form">
+          <label class="modal__label" id="edit-avatar-input">
+            <input
+              type="url"
+              class="modal__input modal__input_type_url"
+              placeholder="Image URL"
+              id="avatar-url-input"
+              name="avatar"
+              required
+            />
+            <span class="modal__error" id="avatar-url-input-error"></span>
+          </label>
+          <button
+            class="modal__button modal__save modal__button_disabled"
+            id="modal-button-avatar"
+            type="submit"
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!--Card delete confirm modal-->
-    <div class="modal confirm-modal" id="confirm-modal">
-      <div class="modal__container">
-        <button class="modal__close"></button>
-        <h2 class="modal__heading">Are you sure?</h2>
-        <button class="modal__button" type="submit">Yes</button>
+    <div class="modal" id="modal-confirm">
+      <div class="modal__container" id="confirmation-modal">
+        <button class="modal__close" id="confirmation-close"></button>
+        <h2 class="modal__heading modal__heading-confirm">Are You Sure?</h2>
+        <button
+          class="modal__save modal__button"
+          id="confirmation-modal-button"
+        >
+          Yes
+        </button>
       </div>
     </div>
 
