@@ -28,7 +28,7 @@ const api = new Api({
 function createCard(data) {
   const card = new Card(data, '#card-template', openPreviewModal, handleCardDelete);
   return card.getView();
-}
+};
 
 const cardSection = new Section({
   renderer: (item) => {
@@ -52,7 +52,7 @@ imageModal.setEventListeners();
 
 function openPreviewModal(cardData) {
   imageModal.open(cardData);
-}
+};
 
 
 
@@ -78,7 +78,7 @@ function handleAddCardSubmit({ title, url }) {
     .catch(error => {
       console.error('Error adding card:', error);
     });
-}
+};
 
 
 // Instance of PopupWithForm for adding a new card
@@ -135,13 +135,18 @@ openProfileModalButton.addEventListener("click", () => {
 });
 
 
+remove() {
+  this._cardElement.remove();
+}
 
 function handleCardDelete(card) {
-  deleteConfirmationModal.open();
-  card.setSubmitAction(()=>{
-    // card._id
-    api.deleteCard(card._id);
-  })
+  confirmPopup.open();
+  confirmPopup.setSubmit(() => {
+    api.deleteCard(card._id).then(() => {
+      card.remove();
+      confirmPopup.close();
+    });
+  });
 }
 
 
