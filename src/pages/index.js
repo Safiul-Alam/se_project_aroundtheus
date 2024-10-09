@@ -192,7 +192,7 @@ const avatarEditPopup = new PopupWithForm( "#edit-avatar-modal",(inputFieldValue
     api.setUserAvatar(inputFieldValue.Link)
       .then((res) => {
         userInfo.setUserInfo(res);
-        avatarEditPopup.close();
+        avatarEditPopup.closeAfterSubmit();
       })
       .catch((err) => alert(err))
       .finally(() => avatarEditPopup.resetButtonText());

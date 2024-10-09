@@ -6,7 +6,7 @@ export default class PopupWithForm extends Popup {
       this._popupForm = this._popupElement.querySelector('.modal__form');
       this._inputList = [...this._popupForm.querySelectorAll('.modal__input')];
       this._handleFormSubmit = handleFormSubmit;
-      this._submitButtonText = this._submitButton.textContent;
+      // this._submitButtonText = this._submitButton.textContent;
   }
 
   _getInputValues() {
@@ -26,6 +26,14 @@ export default class PopupWithForm extends Popup {
 
   resetButtonText() {
     this._submitButton.textContent = this._submitButtonText;
+  }
+
+
+
+  closeAfterSubmit() {
+    this._popupForm.reset();
+    this.open();
+    this.close();
   }
 
   setEventListeners() {
