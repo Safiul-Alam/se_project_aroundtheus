@@ -40,7 +40,7 @@ const cardSection = new Section({
 // cardSection.renderItems(initialCards);
 api.getInitialCards()
   .then((res) => {
-    console.log(res)
+    // console.log(res)
     cardSection.renderItems(res)})
   .catch((err) => alert(err));
 
@@ -167,4 +167,16 @@ const confirmPopup = new PopupWithConfirmation("#modal-confirm", (cardData, evt)
 confirmPopup.setEventListeners();
 
 
+const avatarEditPopup = new PopupWithForm( "#edit-avatar-modal",(inputFieldValue, evt) => {
+  evt.preventDefault();
+  api.setUserAvatar(inputFieldValue.Link)
+    .then((res) => {
+      userInfo.setUserInfo(res);
+      avatarEditPopup.close();
+    })
+    .catch((err) => alert(err))
+    .finally(() => avatarEditPopup.resetButtonText());
+  },
 
+);
+avatarEditPopup.setEventListeners();

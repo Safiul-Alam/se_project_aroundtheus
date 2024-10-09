@@ -19,13 +19,20 @@
 
       <main class="main">
         <section class="profile page__section">
-          <img
+          <!-- <img
             src="<%=require('./images/jacques-cousteau.jpg')%>"
             alt="Avater"
             class="profile__image"
           />
+          <button class="avatar__edit-icon" type="button"></button> -->
 
-          <button class="avatar__edit-icon" type="button"></button>
+          <img class="profile__image" alt="avatar image" />
+          <div class="profile__image-edit">
+            <img
+              src="<%=require('./images/edit-profile.svg')%>"
+              alt="profile image edit"
+            />
+          </div>
 
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
