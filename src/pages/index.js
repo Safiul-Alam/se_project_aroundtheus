@@ -167,16 +167,18 @@ const confirmPopup = new PopupWithConfirmation("#modal-confirm", (cardData, evt)
 confirmPopup.setEventListeners();
 
 
-const avatarEditPopup = new PopupWithForm( "#edit-avatar-modal",(inputFieldValue, evt) => {
-  evt.preventDefault();
-  api.setUserAvatar(inputFieldValue.Link)
-    .then((res) => {
-      userInfo.setUserInfo(res);
-      avatarEditPopup.close();
-    })
-    .catch((err) => alert(err))
-    .finally(() => avatarEditPopup.resetButtonText());
-  },
+const avatarEditForm = document.querySelector('#edit-avatar-modal');
+avatarEditForm.addEventListener('submit', function(event) {
+  event.preventDefault();
 
-);
-avatarEditPopup.setEventListeners();
+  const avatarUrl = document.querySelector('#avatar-url-input').value;
+  // Call API to update avatar
+  api.setUserAvatar({ avatar: avatarUrl })
+    .then((data) => {
+      document.querySelector('.profile__image').src = data.avatar; // Assuming this is the correct selector for the image
+      avatarEditPopup.close(); // Adjust if your popup method differs
+    })
+    .catch((error) => {
+      console.error('Error updating avatar:', error);
+    });
+});
