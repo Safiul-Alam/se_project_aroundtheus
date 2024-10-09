@@ -167,6 +167,8 @@ const confirmPopup = new PopupWithConfirmation("#modal-confirm", (cardData, evt)
 confirmPopup.setEventListeners();
 
 
+
+// Avatar update
 const avatarEditForm = document.querySelector('#edit-avatar-modal');
 avatarEditForm.addEventListener('submit', function(event) {
   event.preventDefault();
