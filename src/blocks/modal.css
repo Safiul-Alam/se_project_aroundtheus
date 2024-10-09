@@ -235,7 +235,7 @@
   #confirmation-modal.modal__container,
   #edit-avatar-modal-container.modal__container {
     width: 282px;
-    height: 322px;
+    /* height: 322px; */
     padding: 0;
   }
 

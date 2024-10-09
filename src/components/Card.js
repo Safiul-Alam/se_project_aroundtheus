@@ -43,6 +43,10 @@ export default class Card {
     });
   }
 
+  remove() {
+    this._cardElement.remove();
+  }
+
   getView() {
     this._cardElement = this._getTemplate();
     this._likeButton = this._cardElement.querySelector(".card__like_button");

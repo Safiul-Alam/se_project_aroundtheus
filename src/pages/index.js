@@ -135,9 +135,7 @@ openProfileModalButton.addEventListener("click", () => {
 });
 
 
-remove() {
-  this._cardElement.remove();
-}
+
 
 function handleCardDelete(card) {
   confirmPopup.open();
