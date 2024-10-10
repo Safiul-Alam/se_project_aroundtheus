@@ -85,7 +85,7 @@
 }
 
 /* Avatar */
-.avatar__edit-icon {
+/* .avatar__edit-icon {
   background: transparent url(../images/edit-icon.svg) center no-repeat;
   width: 26px;
   height: 26px;
@@ -106,7 +106,7 @@
 #edit-avatar-modal-container {
   width: 430px;
   height: 272px;
-}
+} */
 
 .profile__image-container {
   position: relative;
@@ -122,6 +122,10 @@
 }
 
 .profile__edit-image {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   max-height: 122px;
   max-width: 122px;
   height: 100%;
@@ -137,6 +141,7 @@
 }
 
 .profile__edit-image:hover {
+  background: transparent url(../images/edit-profile.svg) center no-repeat;
   opacity: 100;
   cursor: pointer;
   transition: opacity 0.1s linear;

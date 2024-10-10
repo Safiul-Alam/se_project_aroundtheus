@@ -11,6 +11,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from '../components/UserInfo.js';
 import Api from "../components/Api.js";
 import { PopupWithConfirmation } from '../components/popupWithConfirmation.js';
+import util from '../utils/utils.js'
 
 
 
@@ -104,7 +105,7 @@ editProfileFormValidator.enableValidation();
 const profileName = ".profile__title";
 const profileDescription = ".profile__description";
 // Create user info instance
-const userInfo = new UserInfo({ userName: profileName, userJob: profileDescription});
+const userInfo = new UserInfo({ userName: profileName, userJob: profileDescription, avatarSelector: '.profile__image'}, );
 
 // Function to handle form submission and update the profile
 function handleProfileFormSubmit(input) {
@@ -202,18 +203,24 @@ confirmPopup.setEventListeners();
 // avatarEditPopup.setEventListeners();
 
 const profileImageForm = document.querySelector("#edit-avatar-form");
-const profileImageFormValidator = new FormValidator(validationSettings, profileImageForm);
-profileImageFormValidator.enableValidation();
+const editAvaterFormValidator = new FormValidator(validationSettings, profileImageForm);
+editAvaterFormValidator.enableValidation();
+
+
+
+const newProfileImageModal = new PopupWithForm( "#edit-avatar-modal" , handleProfileImageFormSubmit);
+newProfileImageModal.setEventListeners();
 
 function handleProfileImageFormSubmit(data) {
   newProfileImageModal.handleLoad(true, "Saving...");
   api
-    .updateProfilePicture(data.image)
+    .setUserAvatar(data.avatar)
     .then(() => {
-      userInfo.setProfileImage(data.image);
+      userInfo.setAvatarImage(data.avatar);
       newProfileImageModal.close();
       profileImageForm.reset();
-      profileImageFormValidator.disableButton();
+      profileImageForm.close();
+      editAvaterFormValidator.disableButton();
     })
     .catch((err) => {
       console.error(err);
@@ -223,10 +230,8 @@ function handleProfileImageFormSubmit(data) {
     });
 }
 
-const profileImageCover = document.querySelector(".profile__edit-imag");
+const profileImageCover = document.querySelector(".profile__edit-image");
 profileImageCover.addEventListener("click", function () {
   newProfileImageModal.open();
 });
 
-const newProfileImageModal = new PopupWithForm("#edit-avatar-modal", handleProfileImageFormSubmit);
-newProfileImageModal.setEventListeners();
