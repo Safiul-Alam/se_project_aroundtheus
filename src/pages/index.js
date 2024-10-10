@@ -187,16 +187,46 @@ confirmPopup.setEventListeners();
 
 
 
-const avatarEditPopup = new PopupWithForm( "#edit-avatar-modal",(inputFieldValue, evt) => {
-    evt.preventDefault();
-    api.setUserAvatar(inputFieldValue.Link)
-      .then((res) => {
-        userInfo.setUserInfo(res);
-        avatarEditPopup.closeAfterSubmit();
-      })
-      .catch((err) => alert(err))
-      .finally(() => avatarEditPopup.resetButtonText());
-  },
+// const avatarEditPopup = new PopupWithForm( "#edit-avatar-modal",(inputFieldValue, evt) => {
+//     evt.preventDefault();
+//     api.setUserAvatar(inputFieldValue.Link)
+//       .then((res) => {
+//         userInfo.setUserInfo(res);
+//         avatarEditPopup.closeAfterSubmit();
+//       })
+//       .catch((err) => alert(err))
+//       .finally(() => avatarEditPopup.resetButtonText());
+//   },
 
-);
-avatarEditPopup.setEventListeners();
+// );
+// avatarEditPopup.setEventListeners();
+
+const profileImageForm = document.querySelector("#edit-avatar-form");
+const profileImageFormValidator = new FormValidator(validationSettings, profileImageForm);
+profileImageFormValidator.enableValidation();
+
+function handleProfileImageFormSubmit(data) {
+  newProfileImageModal.handleLoad(true, "Saving...");
+  api
+    .updateProfilePicture(data.image)
+    .then(() => {
+      userInfo.setProfileImage(data.image);
+      newProfileImageModal.close();
+      profileImageForm.reset();
+      profileImageFormValidator.disableButton();
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      newProfileImageModal.handleLoad(false);
+    });
+}
+
+const profileImageCover = document.querySelector(".profile__edit-imag");
+profileImageCover.addEventListener("click", function () {
+  newProfileImageModal.open();
+});
+
+const newProfileImageModal = new PopupWithForm("#edit-avatar-modal", handleProfileImageFormSubmit);
+newProfileImageModal.setEventListeners();

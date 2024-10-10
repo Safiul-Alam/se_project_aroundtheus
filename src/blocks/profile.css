@@ -108,18 +108,24 @@
   height: 272px;
 }
 
+.profile__image-container {
+  position: relative;
+}
+
 .profile__image {
   margin-right: 24px;
   height: 120px;
   width: 120px;
   border-radius: 50%;
-  position: relative;
+  /* position: relative; */
   object-fit: cover;
 }
 
-.profile__image-edit {
-  height: 122px;
-  width: 122px;
+.profile__edit-image {
+  max-height: 122px;
+  max-width: 122px;
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -130,7 +136,7 @@
   transition: opacity 0.6s linear;
 }
 
-.profile__image-edit:hover {
+.profile__edit-image:hover {
   opacity: 100;
   cursor: pointer;
   transition: opacity 0.1s linear;
