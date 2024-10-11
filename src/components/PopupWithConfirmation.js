@@ -20,8 +20,6 @@ export class PopupWithConfirmation extends Popup {
     });
   }
 
-  close() {
-    this.close();
-  }
+
 
 }
