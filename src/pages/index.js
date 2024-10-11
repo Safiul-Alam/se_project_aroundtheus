@@ -30,7 +30,10 @@ const profileDescription = ".profile__description";
 const userInfo = new UserInfo({ userName: profileName, userJob: profileDescription, avatarSelector: '.profile__image'}, );
 
 api.getUserInfo()
-  .then((res) => userInfo.setUserAvatar(res.avatar))
+  .then((res) => {
+    userInfo.setUserInfo(res)
+    userInfo.setAvatarImage(res.avatar);
+  })
   .catch((err) => alert(err));
 
 // const profileNameEl = profile.querySelector(".profile__title");
