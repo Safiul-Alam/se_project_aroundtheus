@@ -33,7 +33,7 @@ const userInfo = new UserInfo(
 
 api.getUserInfo()
   .then((res) => {
-    console.log(res);
+    // console.log(res);
     // userInfo.setUserInfo(res)
     userInfo.setUserInfo({modalTitle: res.name, description: res.about });
     userInfo.setAvatarImage(res.avatar);
@@ -70,9 +70,9 @@ api.getInitialCards()
     cardSection.renderItems(res)})
   .catch((err) => alert(err));
 
-  api.getUserInfo()
-  .then((res) => userInfo.setUserInfo(res))
-  .catch((err) => alert(err));
+  // api.getUserInfo()
+  // .then((res) => userInfo.setUserInfo(res))
+  // .catch((err) => alert(err));
 
 //----------------------------------------------------------------
 // Image Modal
