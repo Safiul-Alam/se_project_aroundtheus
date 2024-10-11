@@ -27,11 +27,15 @@ const api = new Api({
 const profileName = ".profile__title";
 const profileDescription = ".profile__description";
 // Create user info instance
-const userInfo = new UserInfo({ userName: profileName, userJob: profileDescription, avatarSelector: '.profile__image'}, );
+const userInfo = new UserInfo(
+  { userName: profileName, userJob: profileDescription, avatarSelector: '.profile__image'},
+);
 
 api.getUserInfo()
   .then((res) => {
-    userInfo.setUserInfo(res)
+    console.log(res);
+    // userInfo.setUserInfo(res)
+    userInfo.setUserInfo({modalTitle: res.name, description: res.about });
     userInfo.setAvatarImage(res.avatar);
   })
   .catch((err) => alert(err));
