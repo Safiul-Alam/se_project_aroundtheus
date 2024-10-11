@@ -23,7 +23,24 @@ const api = new Api({
   }
 });
 
+//userInfo
+const profileName = ".profile__title";
+const profileDescription = ".profile__description";
+// Create user info instance
+const userInfo = new UserInfo({ userName: profileName, userJob: profileDescription, avatarSelector: '.profile__image'}, );
 
+api.getUserInfo()
+  .then((res) => userInfo.setUserAvatar(res.avatar))
+  .catch((err) => alert(err));
+
+// const profileNameEl = profile.querySelector(".profile__title");
+// const profileAboutEl = profile.querySelector(".profile__description");
+// const profileAvatar = profile.querySelector(".profile__image");
+// const userInfo = new UserInfo({
+//   name: profileNameEl,
+//   about: profileAboutEl,
+//   avatar: profileAvatar,
+// });
 
 
 function createCard(data) {
@@ -39,12 +56,16 @@ const cardSection = new Section({
   selector: selectors.cardSelection,
 });
 // cardSection.renderItems(initialCards);
+
 api.getInitialCards()
   .then((res) => {
     // console.log(res)
     cardSection.renderItems(res)})
   .catch((err) => alert(err));
 
+  api.getUserInfo()
+  .then((res) => userInfo.setUserInfo(res))
+  .catch((err) => alert(err));
 
 //----------------------------------------------------------------
 // Image Modal
@@ -101,11 +122,7 @@ addCardButton.addEventListener("click", () => {
 const editProfileFormValidator = new FormValidator(validationSettings, profileEditForm);
 editProfileFormValidator.enableValidation();
 
-//userInfo
-const profileName = ".profile__title";
-const profileDescription = ".profile__description";
-// Create user info instance
-const userInfo = new UserInfo({ userName: profileName, userJob: profileDescription, avatarSelector: '.profile__image'}, );
+
 
 // Function to handle form submission and update the profile
 function handleProfileFormSubmit(input) {
