@@ -84,8 +84,6 @@
   opacity: 0.6;
 }
 
-
-
 .profile__image-container {
   position: relative;
 }
@@ -125,9 +123,8 @@
   transition: opacity 0.1s linear;
 }
 
-
 /* Avatar */
-/* .avatar__edit-icon {
+.avatar__edit-icon {
   background: transparent url(../images/edit-icon.svg) center no-repeat;
   width: 26px;
   height: 26px;
@@ -148,7 +145,7 @@
 #edit-avatar-modal-container {
   width: 430px;
   height: 272px;
-} */
+}
 
 #edit-avatar-input {
   padding-top: 54px;
