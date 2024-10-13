@@ -45,13 +45,13 @@ api
   })
   .catch((err) => alert(err));
 
-  
 function createCard(data) {
   const card = new Card(
     data,
     "#card-template",
     openPreviewModal,
-    handleCardDelete
+    handleCardDelete,
+    handleCardLike()
   );
   return card.getView();
 }
@@ -166,6 +166,10 @@ function handleCardDelete(card) {
       confirmPopup.close();
     });
   });
+}
+
+function handleCardLike(card) {
+  // handle the logic for either liking or disliking the card
 }
 
 // Card delete confirm Modal ------------------------------------------
