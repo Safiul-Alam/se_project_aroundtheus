@@ -169,7 +169,14 @@ function handleCardDelete(card) {
 }
 
 function handleCardLike(card) {
-  // handle the logic for either liking or disliking the card
+  const method = card.isLiked ? "DELETE" : "PUT";
+
+  api
+    .updateCardLike(card._id, method)
+    .then((res) => {
+      card.setIsLiked(res.isLiked);
+    })
+    .catch((err) => alert(`Error: ${err}`));
 }
 
 // Card delete confirm Modal ------------------------------------------
