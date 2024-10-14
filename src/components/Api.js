@@ -16,7 +16,6 @@ export default class Api {
     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
   }
 
-
   getInitialCards() {
     return this._request(`/cards`, {});
   }
@@ -60,6 +59,4 @@ export default class Api {
       method: method,
     });
   }
-
-
 }

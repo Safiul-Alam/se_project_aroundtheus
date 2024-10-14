@@ -174,6 +174,7 @@ function handleCardLike(card) {
   api
     .updateCardLike(card._id, method)
     .then((res) => {
+      console.log(res);
       card.setIsLiked(res.isLiked);
     })
     .catch((err) => alert(`Error: ${err}`));
