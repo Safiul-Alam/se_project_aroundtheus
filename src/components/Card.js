@@ -4,7 +4,9 @@ export default class Card {
     cardSelector,
     handleImageClick,
     handleDeleteClick,
-    handleLikeClick
+    handleLikeClick,
+    renderLikeIcon
+    
   ) {
     this._name = data.name;
     this._link = data.link;
@@ -13,6 +15,7 @@ export default class Card {
     this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
     this._handleLikeClick = handleLikeClick; // store the function
+    this.renderLikeIcon = renderLikeIcon;
   }
 
   _getTemplate() {

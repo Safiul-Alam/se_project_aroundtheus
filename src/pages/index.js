@@ -51,9 +51,31 @@ function createCard(data) {
     "#card-template",
     openPreviewModal,
     handleCardDelete,
-    handleCardLike()
+    handleCardLike
   );
   return card.getView();
+}
+
+function handleCardDelete(card) {
+  confirmPopup.open();
+  confirmPopup.setSubmit(() => {
+    api.deleteCard(card._id).then(() => {
+      card.remove();
+      confirmPopup.close();
+    });
+  });
+}
+
+function handleCardLike(card) {
+  const method = card.isLiked ? "DELETE" : "PUT";
+
+  api
+    .updateCardLike(card._id, method)
+    .then((res) => {
+      // console.log(res);
+      card.setIsLiked(res.isLiked);
+    })
+    .catch((err) => alert(`Error: ${err}`));
 }
 
 const cardSection = new Section({
@@ -157,28 +179,6 @@ openProfileModalButton.addEventListener("click", () => {
   editProfileFormValidator.resetValidation();
   profileModal.open();
 });
-
-function handleCardDelete(card) {
-  confirmPopup.open();
-  confirmPopup.setSubmit(() => {
-    api.deleteCard(card._id).then(() => {
-      card.remove();
-      confirmPopup.close();
-    });
-  });
-}
-
-function handleCardLike(card) {
-  const method = card.isLiked ? "DELETE" : "PUT";
-
-  api
-    .updateCardLike(card._id, method)
-    .then((res) => {
-      console.log(res);
-      card.setIsLiked(res.isLiked);
-    })
-    .catch((err) => alert(`Error: ${err}`));
-}
 
 // Card delete confirm Modal ------------------------------------------
 
