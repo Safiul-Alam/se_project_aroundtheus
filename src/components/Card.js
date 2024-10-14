@@ -4,18 +4,16 @@ export default class Card {
     cardSelector,
     handleImageClick,
     handleDeleteClick,
-    handleLikeClick,
-    renderLikeIcon
-    
+    handleLikeClick
   ) {
+    this.isLiked = data.isLiked; //this one
     this._name = data.name;
     this._link = data.link;
     this._id = data._id;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
-    this._handleLikeClick = handleLikeClick; // store the function
-    this.renderLikeIcon = renderLikeIcon;
+    this._handleLikeClick = handleLikeClick;
   }
 
   _getTemplate() {
@@ -46,7 +44,7 @@ export default class Card {
 
   setIsLiked(isLiked) {
     this.isLiked = isLiked; // this allows to change the value of isLiked
-    renderLikeIcon(); // this will update the icon visually
+    this.renderLikeIcon(); // this will update the icon visually
   }
 
   _setEventListeners() {
@@ -84,6 +82,8 @@ export default class Card {
 
     const cardTitle = this._cardElement.querySelector(".card__title");
     cardTitle.textContent = this._name;
+
+    this.renderLikeIcon();
 
     this._setEventListeners();
     return this._cardElement;
