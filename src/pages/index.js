@@ -113,6 +113,7 @@ cardAddFormValidator.enableValidation();
 
 // Function to handle form submission and add a new card
 function handleAddCardSubmit({ title, url }) {
+  newCardModal.handleLoad(true, "Saving...");
   const newCardData = { Title: title, Link: url };
 
   // Add new card through API
@@ -150,6 +151,7 @@ editProfileFormValidator.enableValidation();
 
 // Function to handle form submission and update the profile
 function handleProfileFormSubmit(input) {
+  profileModal.handleLoad(true, "Saving...");
   // userInfo.setUserInfo(input);
   // profileModal.close();
 
