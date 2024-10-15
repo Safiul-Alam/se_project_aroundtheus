@@ -59,10 +59,13 @@ function createCard(data) {
 function handleCardDelete(card) {
   confirmPopup.open();
   confirmPopup.setSubmit(() => {
-    api.deleteCard(card._id).then(() => {
-      card.remove();
-      confirmPopup.close();
-    });
+    api
+      .deleteCard(card._id)
+      .then(() => {
+        card.remove();
+        confirmPopup.close();
+      })
+      .catch((err) => alert(`Error: ${err}`));
   });
 }
 
@@ -124,6 +127,7 @@ function handleAddCardSubmit({ title, url }) {
       cardSection.addItem(newCard); // Add the new card to the section
       newCardModal.close(); // Close the modal after adding the card
       cardAddFormValidator.disableButton(); // Disable the form submission button
+      cardAddForm.reset();
     })
     .catch((error) => {
       console.error("Error adding card:", error);
@@ -160,6 +164,7 @@ function handleProfileFormSubmit(input) {
     .then(() => {
       userInfo.setUserInfo(input);
       profileModal.close();
+      profileEditForm.reset();
     })
     .catch((error) => {
       console.error("Error updating profile:", error);
@@ -228,6 +233,7 @@ function handleProfileImageFormSubmit(data) {
       profileImageForm.reset();
       // profileImageForm.close();
       editAvaterFormValidator.disableButton();
+      profileImageForm.reset();
     })
     .catch((err) => {
       console.error(err);
