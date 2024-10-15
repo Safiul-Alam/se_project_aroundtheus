@@ -131,6 +131,9 @@ function handleAddCardSubmit({ title, url }) {
     })
     .catch((error) => {
       console.error("Error adding card:", error);
+    })
+    .finally(() => {
+      newCardModal.handleLoad(false); // Reset the button text
     });
 }
 
@@ -168,6 +171,9 @@ function handleProfileFormSubmit(input) {
     })
     .catch((error) => {
       console.error("Error updating profile:", error);
+    })
+    .finally(() => {
+      profileModal.handleLoad(false); // Reset the button text
     });
 }
 
