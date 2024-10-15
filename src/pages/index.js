@@ -117,7 +117,7 @@ cardAddFormValidator.enableValidation();
 // Function to handle form submission and add a new card
 function handleAddCardSubmit({ title, url }) {
   newCardModal.handleLoad(true, "Saving...");
-  const newCardData = { Title: title, Link: url };
+  const newCardData = { name: title, link: url };
 
   // Add new card through API
   api

@@ -38,12 +38,12 @@ export default class Api {
     });
   }
 
-  uploadCard({ Title, Link }) {
+  uploadCard({ name, link }) {
     return this._request(`/cards`, {
       method: "POST",
       body: JSON.stringify({
-        name: Title,
-        link: Link,
+        name: name,
+        link: link,
       }),
     });
   }
