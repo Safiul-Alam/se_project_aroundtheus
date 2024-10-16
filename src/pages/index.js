@@ -15,7 +15,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
-import { PopupWithConfirmation } from "../components/popupWithConfirmation.js";
+import { PopupWithConfirmation } from "../components/PopupWithConfirmation.js";
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
