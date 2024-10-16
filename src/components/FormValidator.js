@@ -74,7 +74,7 @@ class FormValidator {
   enableValidation() {
     this._formElement.addEventListener('submit', (e) => {
       e.preventDefault();
-      this._toggleButtonState();  // Call to check the button state on submit
+      // this._toggleButtonState();  // Call to check the button state on submit
     });
     this._setEventListeners();
     this._toggleButtonState();

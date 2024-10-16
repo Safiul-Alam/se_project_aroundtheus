@@ -19,11 +19,20 @@
 
       <main class="main">
         <section class="profile page__section">
-          <img
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="Avater"
-            class="profile__image"
-          />
+
+          <div class="profile__image-container" ">
+            <img
+              src="<%= require('./images/jacques-cousteau.jpg')%>"
+              alt="Jacques jacques cousteau"
+              class="profile__image"
+            />
+            <button
+              class="profile__edit-image"
+              type="button"
+              id="change-avatar-image"
+            ></button>
+          </div>
+
           <div class="profile__info">
             <h1 class="profile__title">Jacques Cousteau</h1>
             <button
@@ -148,6 +157,49 @@
         <div class="modal__close" id="preview-modal-close"></div>
         <img class="modal__image" src="" alt="" />
         <p class="modal__caption"></p>
+      </div>
+    </div>
+
+    <!-- Profile Avatar edit modal-->
+    <div class="modal" id="edit-avatar-modal">
+      <div class="modal__container" id="edit-avatar-modal-container">
+        <button class="modal__close" id="edit-avatar-close"></button>
+        <h2 class="modal__heading" id="edit-avatar-modal-heading">Change Profile Picture</h2>
+
+        <form class="modal__form" id="edit-avatar-form">
+          <label class="modal__label" id="edit-avatar-input">
+            <input
+              type="url"
+              class="modal__input modal__input_type_url"
+              placeholder="Image URL"
+              id="avatar-url-input"
+              name="avatar"
+              required
+            />
+            <span class="modal__error" id="avatar-url-input-error"></span>
+          </label>
+          <button
+            class="modal__button modal__save modal__button_disabled"
+            id="modal-button-avatar"
+            type="submit"
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!--Card delete confirm modal-->
+    <div class="modal" id="modal-confirm">
+      <div class="modal__container" id="confirmation-modal">
+        <button class="modal__close" id="confirmation-close"></button>
+        <h2 class="modal__heading modal__heading-confirm">Are You Sure?</h2>
+        <button
+          class="modal__save modal__button"
+          id="confirmation-modal-button"
+        >
+          Yes
+        </button>
       </div>
     </div>
 
