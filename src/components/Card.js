@@ -52,7 +52,7 @@ export default class Card {
     //   this._handleLikeButton();
     // });
     this._likeButton.addEventListener("click", () => {
-      this._handleLikeButton(); // ?
+      // this._handleLikeButton(); // ?
       this._handleLikeClick(this);
     });
 
