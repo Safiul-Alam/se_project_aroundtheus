@@ -1,0 +1,71 @@
+You can universally create instances of validators for all
+forms in the project storing them inside one object:formValidators.
+Then you can take any validator using attribute name of
+the form where you need to disable/enable the submit
+button or remove errors.
+
+
+// define an object for storing validators
+const formValidators = {}
+
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector))
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement)
+    // Here you get the name of the form (if you don’t have it then you need to add it into each form in `index.html` first)
+    const formName = formElement.getAttribute('name')
+
+   // Here you store the validator using the `name` of the form
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+enableValidation(config);
+
+
+And now you can use them for disabling buttons or clearing errors:
+formValidators[ profileForm.getAttribute('name') ].resetValidation()
+
+// or you can use a string – the name of the form (you know it from `index.html`)
+
+formValidators['profile-form'].resetValidation()
+
+
+--------------
+
+If it’s interesting for you here is how we can make a universal function for handling any submit. We can get rid of such duplicating as loading effect, closing and catching errors
+
+// You can make a universal function that accepts a request, popup instance and optional loading text
+
+function handleSubmit(request, popupInstance, loadingText = "Saving...") {
+  // here we change the button text
+  popupInstance.renderLoading(true, loadingText);
+  request()
+    .then(() => {
+      // We need to close only in `then`
+      popupInstance.close()
+    })
+      // we need to catch possible errors
+      // console.error is used to handle errors if you don’t have any other ways for that
+     .catch(console.error)
+    // in `finally` we need to return the initial button text back in any case
+    .finally(() => {
+      popupInstance.renderLoading(false);
+    });
+}
+
+
+You need to pass the request into the call of handleSubmit like that:
+
+// here is an example of the profile form handling
+function handleProfileFormSubmit(inputValues) {
+  // we create a function that returns a promise
+  function makeRequest() {
+    // `return` lets us use a promise chain `then, catch, finally` inside `handleSubmit`
+    return api.editProfile(inputValues).then((userData) => {
+      userInfo.setUserInfo(userData)
+    });
+  }
+  // Here we call the function passing the request, popup instance and if we need some other loading text we can pass it as the 3rd argument
+  handleSubmit(makeRequest, profilePopup);
+}

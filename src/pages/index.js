@@ -16,7 +16,6 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
 import { PopupWithConfirmation } from "../components/popupWithConfirmation.js";
-import util from "../utils/utils.js";
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
@@ -88,7 +87,6 @@ const cardSection = new Section({
   },
   selector: selectors.cardSelection,
 });
-// cardSection.renderItems(initialCards);
 
 api
   .getInitialCards()
@@ -159,8 +157,6 @@ editProfileFormValidator.enableValidation();
 // Function to handle form submission and update the profile
 function handleProfileFormSubmit(input) {
   profileModal.handleLoad(true, "Saving...");
-  // userInfo.setUserInfo(input);
-  // profileModal.close();
 
   api
     .setUserInfo(input)
@@ -194,28 +190,10 @@ openProfileModalButton.addEventListener("click", () => {
 });
 
 // Card delete confirm Modal ------------------------------------------
-
-// const deleteConfirmationModal = new PopupWithConfirmation ('.confirm-modal', handleCardDelete );
-
-const confirmPopup = new PopupWithConfirmation(
-  "#modal-confirm",
-  (cardData, evt) => {
-    evt.preventDefault();
-    api
-      .deleteCard(cardData.cardId)
-      .then(() => {
-        cardData.cardEl.remove();
-        cardData.cardEl = null;
-        confirmPopup.close();
-      })
-      .catch((err) => alert(err))
-      .finally(() => confirmPopup.resetButtonText());
-  }
-);
+const confirmPopup = new PopupWithConfirmation("#modal-confirm", () => {});
 confirmPopup.setEventListeners();
 
 // Avatar --------------------------------------------
-
 const profileImageForm = document.querySelector("#edit-avatar-form");
 const editAvaterFormValidator = new FormValidator(
   validationSettings,
